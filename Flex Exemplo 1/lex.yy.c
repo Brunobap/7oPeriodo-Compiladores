@@ -399,27 +399,27 @@ static const YY_CHAR yy_ec[256] =
 
 static const YY_CHAR yy_meta[4] =
     {   0,
-        1,    1,    1
+        1,    2,    2
     } ;
 
-static const flex_int16_t yy_base[9] =
+static const flex_int16_t yy_base[10] =
     {   0,
-        3,    2,    4,    7,    0,    0,    7,    0
+        3,    2,    4,    7,    0,    0,    7,    0,    1
     } ;
 
-static const flex_int16_t yy_def[9] =
+static const flex_int16_t yy_def[10] =
     {   0,
-        8,    8,    7,    7,    7,    5,    0,    7
+        8,    8,    7,    7,    9,    9,    0,    7,    7
     } ;
 
 static const flex_int16_t yy_nxt[11] =
     {   0,
-        4,    6,    6,    7,    5,    5,    3,    7,    7,    7
+        4,    4,    6,    7,    5,    5,    3,    7,    7,    7
     } ;
 
 static const flex_int16_t yy_chk[11] =
     {   0,
-        8,    5,    5,    3,    2,    1,    7,    7,    7,    7
+        8,    8,    9,    3,    2,    1,    7,    7,    7,    7
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -438,7 +438,7 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "teste3.l"
 #line 5 "teste3.l"
-	int count;
+	int conta = 0;
 #line 443 "lex.yy.c"
 #line 444 "lex.yy.c"
 
@@ -719,7 +719,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 9 "teste3.l"
-count++;
+printf("count = %d\n", ++conta);
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1739,10 +1739,10 @@ int yywrap(void) {
 }
 
 int main(char *argv[]) {
-	yyin = fopen(argv[1], "r");
+	//yyin = fopen(argv[1], "r");
 	yylex();
-	printf("Numero de IDs = %d\n", count);
-	fclose(yyin);
+	//printf("Numero de IDs = %d\n", count);
+	//fclose(yyin);
 	return 0;
 }
 
