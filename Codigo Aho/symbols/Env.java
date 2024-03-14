@@ -1,7 +1,5 @@
 package symbols;
 
-import java.util.Hashtable;
-
 import lexer.*;
 import java.util.*;
 import inter.*;
@@ -13,7 +11,9 @@ public class Env {
 		this.table = new Hashtable();
 		this.prev = n;
 	}
-	public void put(Token w, Id i) { this.table.put(w, i); }
+	public void put(Token w, Id i) {
+		this.table.put(w, i);
+	}
 	public Id get(Token w) {
 		for (Env e = this; e != null; e = e.prev) {
 			Id found = (Id)(e.table.get(w));

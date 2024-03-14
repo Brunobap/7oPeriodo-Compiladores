@@ -11,7 +11,6 @@ public class Array extends Type {
 		this.of = p;
 	}
 	public String toString() {
-		return "["+size+"] "+this.of.toString();
-	}
-	
+		return "["+this.size+"] "+this.of.toString();
+	}	
 }

@@ -4,11 +4,13 @@ import java.io.*;
 import java.util.*;
 import symbols.*;
 
-class Lexer {
+public class Lexer {
 	public static int line = 1;
 	char peek = ' ';
 	Hashtable words = new Hashtable();
-	void reserve(Word w) { words.put(w.lexeme, w); }
+	void reserve(Word w) { 
+		words.put(w.lexeme, w);
+	}
 	public Lexer() {
 		reserve(new Word("if", Tag.IF));
 		reserve(new Word("else", Tag.ELSE));
@@ -23,11 +25,13 @@ class Lexer {
 		reserve(Word.Float);
 	}
 	
-	void readch() throws IOException { peek = (char)System.in.read(); }
+	void readch() throws IOException {
+		this.peek = (char)System.in.read();
+	}
 	boolean readch(char c) throws IOException {
 		readch();
-		if (peek != c) return false;
-		peek = ' ';
+		if (this.peek != c) return false;
+		this.peek = ' ';
 		return true;
 	}
 	
