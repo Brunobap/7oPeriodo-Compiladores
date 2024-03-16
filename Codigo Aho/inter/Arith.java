@@ -11,7 +11,7 @@ public class Arith extends Op {
 		this.expr1 = x1;
 		this.expr2 = x2;
 		
-		Type type = Type.max(expr1.type, expr2.type);
+		this.type = Type.max(expr1.type, expr2.type);
 		if (type == null) error("type error");
 	}
 	

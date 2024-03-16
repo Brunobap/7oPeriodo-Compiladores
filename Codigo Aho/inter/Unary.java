@@ -9,7 +9,7 @@ public class Unary extends Op {
 	public Unary(Token tok, Expr x) {	// handles minus, for ! see Not
 		super(tok, null);
 		this.expr = x;
-		Type type = Type.max(Type.Int, expr.type);
+		this.type = Type.max(Type.Int, expr.type);
 		if (type == null) error("type error");
 	}
 	

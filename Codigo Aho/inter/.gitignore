@@ -6,3 +6,10 @@
 /Temp.class
 /Unary.class
 /Constant.class
+/Logical.class
+/Or.class
+/And.class
+/Not.class
+/Rel.class
+/Access.class
+/Stmt.class
