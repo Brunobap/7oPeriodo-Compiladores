@@ -38,7 +38,7 @@ public class Lexer {
 	public Token scan() throws IOException {
 		for( ; ; readch()) {
 			if (peek == ' ' || peek == '\t') continue;
-			else if (peek == '\n') line++;
+			else if (peek == '\n' || peek == '\r') line++;
 			else break;
 		}
 		
@@ -63,12 +63,13 @@ public class Lexer {
 				else return new Token('>');				
 		}
 		
-		if (Character.isDefined(peek)) {
+		
+		if (Character.isDigit(peek)) {
 			int v = 0;
 			do {
 				v = 10*v + Character.digit(peek,10);
 				readch();
-			} while (Character.isDefined(peek));
+			} while (Character.isDigit(peek));
 			
 			if (peek != '.') return new Num(v);
 			

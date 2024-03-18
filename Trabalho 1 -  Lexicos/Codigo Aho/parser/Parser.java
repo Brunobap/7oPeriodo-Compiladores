@@ -54,6 +54,10 @@ public class Parser {
 			Type t = type();
 			Token tok = look;
 			match(Tag.ID);
+			match(';');
+			Id id = new Id((Word)tok, t, used);
+			top.put(tok, id);
+			used += t.width;
 		}
 	}
 	
@@ -102,7 +106,7 @@ public class Parser {
 				While whilenode = new While();
 				savedStmt = Stmt.Enclosing;
 				Stmt.Enclosing = whilenode;
-				match(Tag.IF); match('('); 
+				match(Tag.WHILE); match('('); 
 				x = bool(); match(')');
 				s1 = stmt();
 				whilenode.init(x, s1);
@@ -112,9 +116,11 @@ public class Parser {
 				Do donode = new Do();
 				savedStmt = Stmt.Enclosing;
 				Stmt.Enclosing = donode;
-				match(Tag.DO); match('('); 
-				x = bool(); match(')');
+				match(Tag.DO);
 				s1 = stmt();
+				match(Tag.WHILE); match('('); 
+				x = bool(); match(')');
+				match(';');
 				donode.init(x, s1);
 				Stmt.Enclosing = savedStmt;	// reset Stmt.Enclosing
 				return donode;
