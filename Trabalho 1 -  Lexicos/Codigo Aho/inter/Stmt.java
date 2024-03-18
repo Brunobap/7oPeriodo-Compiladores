@@ -7,7 +7,7 @@ public class Stmt extends Node {
 		Null = new Stmt(),
 		Enclosing = Stmt.Null;	// used for break stmt's
 	
-	private void gen() {}	// called with labels begin and after
+	public void gen(int b, int a) {}	// called with labels begin and after
 	
 	int after = 0;	// saves label after
 	

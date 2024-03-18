@@ -13,3 +13,11 @@
 /Rel.class
 /Access.class
 /Stmt.class
+/If.class
+/Else.class
+/While.class
+/Do.class
+/Set.class
+/SetElem.class
+/Seq.class
+/Break.class

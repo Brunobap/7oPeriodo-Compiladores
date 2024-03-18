@@ -19,10 +19,10 @@ public class Lexer {
 		reserve(new Word("break", Tag.BREAK));
 		reserve(Word.True);
 		reserve(Word.False);
-		reserve(Word.Int);
-		reserve(Word.Char);
-		reserve(Word.Bool);
-		reserve(Word.Float);
+		reserve(Type.Int);
+		reserve(Type.Char);
+		reserve(Type.Bool);
+		reserve(Type.Float);
 	}
 	
 	void readch() throws IOException {

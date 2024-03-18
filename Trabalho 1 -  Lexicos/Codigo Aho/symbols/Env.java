@@ -7,7 +7,7 @@ import inter.*;
 public class Env {
 	private Hashtable table;
 	protected Env prev;
-	protected Env(Env n) { 
+	public Env(Env n) { 
 		this.table = new Hashtable();
 		this.prev = n;
 	}

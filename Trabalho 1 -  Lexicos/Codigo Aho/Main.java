@@ -1,4 +1,6 @@
-import java.io.IOException;
+import java.io.*;
+import lexer.*;
+import parser.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
