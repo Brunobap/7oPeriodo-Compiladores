@@ -9,7 +9,7 @@ public class Word extends Token {
 		return this.lexeme;
 	}
 	public static final Word
-		e = new Word("&&", Tag.E),
+		e = new Word("e", Tag.E),
 		ou = new Word("ou", Tag.OU),
 		atrib = new Word("<-", Tag.ATRIB),
 		nao = new Word("nao", Tag.NAO),

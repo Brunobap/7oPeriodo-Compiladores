@@ -37,8 +37,10 @@ public class Parser {
 		s.emitlabel(begin);
 		s.gen(begin, after);
 		s.emitlabel(after);*/
-		while (look != null) {
+		boolean locked = true;
+		while (locked) {
 			switch(look.tag) {
+				// PALAVRAS RESERVADAS 
 				case Tag.PROGRAMA:
 					s.emit("programa: T_PROGRAMA");
 					break;
@@ -76,34 +78,81 @@ public class Parser {
 					s.emit("fimenquanto: T_FIMENQTO");
 					break;
 					
+				// COMPARADORES
 				case Tag.MENOR:
-					s.emit("<: : T_MENOR");
+					s.emit("< : T_MENOR");
 					break;
 				case Tag.MAIOR:
-					s.emit(">: : T_MAIOR");
+					s.emit("> : T_MAIOR");
 					break;
 				case Tag.IGUAL:
-					s.emit("=: : T_IGUAL");
+					s.emit("= : T_IGUAL");
 					break;
 					
-				case Tag.MAIS:
-					s.emit("+: : T_MAIS");
+				// OPERADORES ARITMETICOS
+				case '+':
+					s.emit("+ : T_MAIS");
 					break;
-				case Tag.MENOS:
-					s.emit("-: : T_MENOS");
+				case '-':
+					s.emit("- : T_MENOS");
 					break;
-				case Tag.MULT:
-					s.emit("*: : T_VEZES");
+				case '/':
+					s.emit("* : T_VEZES");
 					break;
-				
-				
+				case Tag.DIV:
+					s.emit("div : T_DIV");
+					break;
+					
+				// OPERADORES BOOLEANOS
+				case Tag.E:
+					s.emit("e : T_E");
+					break;
+				case Tag.OU:
+					s.emit("ou : T_OU");
+					break;
+				case Tag.NAO:
+					s.emit("nao : T_E");
+					break;				
+					
+				// CARACTERES ESPECIAIS
+				case Tag.ATRIB:
+					s.emit("<- : T_ATRIB");
+					break;
+				case Tag.ABREPAR:
+					s.emit("( : T_ABRE");
+					break;
+				case Tag.FECHAPAR:
+					s.emit(") : T_FECHA");
+					break;
+					
+				// TIPOS / CONSTANTES
+				case Tag.INT:
+					s.emit("inteiro : T_INTEIRO");
+					break;
+				case Tag.LOGIC:
+					s.emit("logico : T_LOGIC");
+					break;
+				case Tag.TRUE:
+					s.emit("V : T_V");
+					break;
+				case Tag.FALSE:
+					s.emit("F : T_F");
+					break;
+					
+				// TIPOS DE VARIAVEIS
+				case Tag.ID:
+					s.emit(look.toString()+": T_IDENTIF");
+					break;
+				case Tag.NUM:
+					s.emit(look.toString()+": T_NUMERO");
+					break;
 					
 			}
 			move();
 		}
 	}
 	
-	Stmt block() throws IOException {	// block -> { decls stmts }
+	/*Stmt block() throws IOException {	// block -> { decls stmts }
 		match('{');
 		Env savedEnv = top;
 		top = new Env(top);
@@ -356,5 +405,5 @@ public class Parser {
 			loc = t2;
 		}
 		return new Access(a, loc, type);
-	}
+	}*/
 }

@@ -9,8 +9,8 @@ public class Type extends Word {
 		this.width = w;
 	}
 	public static final Type 
-		Int = new Type("int", Tag.BASIC, 4),
-		Bool = new Type("bool", Tag.BASIC, 1);
+		Int = new Type("inteiro", Tag.INT, 4),
+		Bool = new Type("logico", Tag.LOGIC, 1);
 	
 	public static boolean numeric(Type p) {
 		if (p == Type.Int) return true;

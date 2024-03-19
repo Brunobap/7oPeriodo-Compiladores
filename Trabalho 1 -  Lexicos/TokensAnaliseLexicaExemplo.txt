@@ -20,27 +20,27 @@
 
 -- T_FACA;
 
- T_MAIS;
- T_MENOS;
- T_VEZES;
- T_DIV;
+-- T_MAIS;
+-- T_MENOS;
+-- T_VEZES;
+-- T_DIV;
 
 -- T_MAIOR;
 -- T_MENOR;
 -- T_IGUAL;
 
- T_E;
- T_OU;
- T_NAO;
+-- T_E;
+-- T_OU;
+-- T_NAO;
 
- T_ATRIB;
- T_ABRE;
- T_FECHA;
+-- T_ATRIB;
+-- T_ABRE;
+-- T_FECHA;
 
- T_INTEIRO;
- T_LOGICO;
- T_V;
- T_F;
+-- T_INTEIRO;
+-- T_LOGICO;
+-- T_V;
+-- T_F;
 
 T_IDENTIF; 
 T_NUMERO;

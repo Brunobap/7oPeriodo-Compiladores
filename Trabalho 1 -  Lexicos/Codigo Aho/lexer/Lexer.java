@@ -55,7 +55,17 @@ public class Lexer {
 				if (readch('-')) return Word.atrib;
 				else return Word.menor;
 			case '>':
-				return Word.maior;				
+				return Word.maior;	
+				
+			// TRATAMENTO DE COMENTÁRIOS
+			case '/':
+				readch();
+				if (peek == '/') while (!readch('\n')) continue;
+				else if (peek == '*') {
+					readch();
+					char temp = peek;
+					while ( temp != '*' && !readch('/')) temp = peek;
+				} else return new Token('/');
 		}
 		
 		
@@ -67,15 +77,6 @@ public class Lexer {
 			} while (Character.isDigit(peek));
 			
 			if (peek != '.') return new Num(v);
-			
-			float x = v, d = 10;
-			while(true) {
-				readch();
-				if (!Character.isDigit(peek)) break;
-				x = x + Character.digit(peek, 10)/d;
-				d = d*10;
-			}
-			return new Real(x);
 		}
 		
 		if (Character.isLetter(peek)) {
