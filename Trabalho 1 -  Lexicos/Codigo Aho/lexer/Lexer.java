@@ -12,17 +12,25 @@ public class Lexer {
 		words.put(w.lexeme, w);
 	}
 	public Lexer() {
-		reserve(new Word("if", Tag.IF));
-		reserve(new Word("else", Tag.ELSE));
-		reserve(new Word("while", Tag.WHILE));
-		reserve(new Word("do", Tag.DO));
-		reserve(new Word("break", Tag.BREAK));
+		reserve(new Word("se", Tag.SE));
+		reserve(new Word("senao", Tag.SENAO));
+		reserve(new Word("enquanto", Tag.ENQUANTO));
+		reserve(new Word("faca", Tag.FACA));
+		reserve(new Word("inicio", Tag.INICIO));
+		reserve(new Word("programa", Tag.PROGRAMA));
+		reserve(new Word("fimprograma", Tag.FIMPROGRAMA));
+		reserve(new Word("leia", Tag.LEIA));
+		reserve(new Word("escreva", Tag.ESCREVA));
+		reserve(new Word("entao", Tag.ENTAO));
+		reserve(new Word("fimenquanto", Tag.FIMENQUANTO));
+		reserve(new Word("div", Tag.DIV));
+		reserve(new Word("e", Tag.E));
+		reserve(new Word("ou", Tag.OU));
+		reserve(new Word("nao", Tag.NAO));
 		reserve(Word.True);
 		reserve(Word.False);
 		reserve(Type.Int);
-		reserve(Type.Char);
 		reserve(Type.Bool);
-		reserve(Type.Float);
 	}
 	
 	void readch() throws IOException {
@@ -43,24 +51,11 @@ public class Lexer {
 		}
 		
 		switch(peek) {
-			case '&':
-				if (readch('&')) return Word.and;
-				else return new Token('&');
-			case '|':
-				if (readch('|')) return Word.or;
-				else return new Token('|');
-			case '=':
-				if (readch('=')) return Word.eq;
-				else return new Token('=');
-			case '!':
-				if (readch('=')) return Word.ne;
-				else return new Token('!');
 			case '<':
-				if (readch('=')) return Word.le;
-				else return new Token('<');
+				if (readch('-')) return Word.atrib;
+				else return Word.menor;
 			case '>':
-				if (readch('=')) return Word.ge;
-				else return new Token('>');				
+				return Word.maior;				
 		}
 		
 		

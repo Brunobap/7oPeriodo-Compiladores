@@ -8,7 +8,7 @@ public class Temp extends Expr {
 	int number = 0;
 	
 	public Temp(Type p) {
-		super(Word.temp, p);
+		super(Word.True, p);
 		this.number = ++this.count;
 	}
 	

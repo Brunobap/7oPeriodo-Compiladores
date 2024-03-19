@@ -1,33 +1,33 @@
- T_PROGRAMA;
- T_INICIO;
- T_FIM;
+-- T_PROGRAMA;
+-- T_INICIO;
+-- T_FIM;
 
- T_SE;
- T_ENTAO;
- T_SENAO;
- T_FIMSE;
+-- T_SE;
+-- T_ENTAO;
+-- T_SENAO;
+-- T_FIMSE;
 
- T_ENQTO;
- T_FIMENQTO;
+-- T_ENQTO;
+-- T_FIMENQTO;
 
- T_LEIA;
- T_ESCREVA;
+-- T_LEIA;
+-- T_ESCREVA;
 
- T_SE;
- T_ENTAO;
- T_SENAO;
- T_FIMSE;
+-- T_SE;
+-- T_ENTAO;
+-- T_SENAO;
+-- T_FIMSE;
 
- T_FACA;
+-- T_FACA;
 
  T_MAIS;
  T_MENOS;
  T_VEZES;
  T_DIV;
 
- T_MAIOR;
- T_MENOR;
- T_IGUAL;
+-- T_MAIOR;
+-- T_MENOR;
+-- T_IGUAL;
 
  T_E;
  T_OU;

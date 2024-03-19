@@ -8,7 +8,7 @@ public class Access extends Op {
 	public Expr index;
 	
 	public Access(Id a, Expr i, Type t) {	// p is element type array after
-		super(new Word("[]", Tag.INDEX), t);// flattening the array
+		super(new Word("[]", Tag.NUM), t);// flattening the array
 		this.array = a;
 		this.index = i;
 	}

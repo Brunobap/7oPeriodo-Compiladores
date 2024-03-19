@@ -30,12 +30,77 @@ public class Parser {
 	}
 	
 	public void program() throws IOException {	// program -> block
-		Stmt s = block();
+		Stmt s = new Stmt();
+		/*Stmt s = block();
 		int begin = s.newlabel();
 		int after = s.newlabel();
 		s.emitlabel(begin);
 		s.gen(begin, after);
-		s.emitlabel(after);
+		s.emitlabel(after);*/
+		while (look != null) {
+			switch(look.tag) {
+				case Tag.PROGRAMA:
+					s.emit("programa: T_PROGRAMA");
+					break;
+				case Tag.INICIO:
+					s.emit("inicio: T_INICIO");
+					break;
+				case Tag.FIMPROGRAMA:
+					s.emit("fimprograma: T_FIM");
+					break;
+				case Tag.LEIA:
+					s.emit("leia: T_LEIA");
+					break;
+				case Tag.ESCREVA:
+					s.emit("escreva: T_ESCREVA");
+					break;
+				case Tag.SE:
+					s.emit("se: T_SE");
+					break;
+				case Tag.ENTAO:
+					s.emit("entao: T_ENTAO");
+					break;
+				case Tag.SENAO:
+					s.emit("senao: T_SENAO");
+					break;
+				case Tag.FIMSE:
+					s.emit("fimse: T_FIMSE");
+					break;
+				case Tag.ENQUANTO:
+					s.emit("enquanto: T_ENQTO");
+					break;
+				case Tag.FACA:
+					s.emit("faca: T_FACA");
+					break;
+				case Tag.FIMENQUANTO:
+					s.emit("fimenquanto: T_FIMENQTO");
+					break;
+					
+				case Tag.MENOR:
+					s.emit("<: : T_MENOR");
+					break;
+				case Tag.MAIOR:
+					s.emit(">: : T_MAIOR");
+					break;
+				case Tag.IGUAL:
+					s.emit("=: : T_IGUAL");
+					break;
+					
+				case Tag.MAIS:
+					s.emit("+: : T_MAIS");
+					break;
+				case Tag.MENOS:
+					s.emit("-: : T_MENOS");
+					break;
+				case Tag.MULT:
+					s.emit("*: : T_VEZES");
+					break;
+				
+				
+					
+			}
+			move();
+		}
 	}
 	
 	Stmt block() throws IOException {	// block -> { decls stmts }
