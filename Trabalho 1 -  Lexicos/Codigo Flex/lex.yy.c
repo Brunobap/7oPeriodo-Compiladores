@@ -512,7 +512,10 @@ char *yytext;
 #line 1 "analixadorSimples.l"
 /* comentario de bloco */
 /* comentario de uma linha */
-#line 516 "lex.yy.c"
+#line 13 "analixadorSimples.l"
+	int T_PROGRAMA = 1, T_INICIO = 2, T_FIM = 3, T_LEIA = 4, T_ESCREVA = 5, T_SE = 6, T_ENTAO = 7, T_SENAO = 8, T_FIMSE = 9, T_ENQTO = 10, T_FACA = 11, T_FIMENQTO = 12, T_MAIS = 13, T_MENOS = 14, T_VEZES = 15, T_DIV = 16, T_MAIOR = 17, T_MENOR = 18, T_IGUAL = 19, T_E = 20, T_OU = 21, T_NAO = 22, T_ATRIB = 23, T_FECHA = 24, T_INTEIRO = 25, T_LOGICO = 26, T_V = 27, T_F = 28, T_IDENTIF = 29, T_NUMERO = 30, T_ABRE = 31;
+#line 518 "lex.yy.c"
+#line 519 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -729,10 +732,9 @@ YY_DECL
 		}
 
 	{
-#line 12 "analixadorSimples.l"
+#line 16 "analixadorSimples.l"
 
-
-#line 736 "lex.yy.c"
+#line 738 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -791,193 +793,193 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "analixadorSimples.l"
-printf("%11s: T_PROGRAMA\n", yytext);
+#line 17 "analixadorSimples.l"
+{printf("%11s: T_PROGRAMA\n", yytext); return T_PROGRAMA;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "analixadorSimples.l"
-printf("%11s: T_INICIO\n", yytext);
+#line 18 "analixadorSimples.l"
+{printf("%11s: T_INICIO\n", yytext); return T_INICIO;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "analixadorSimples.l"
-printf("%11s: T_FIM\n", yytext);
+#line 19 "analixadorSimples.l"
+{printf("%11s: T_FIM\n", yytext); return T_FIM;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "analixadorSimples.l"
-printf("%11s: T_LEIA\n", yytext);
+#line 21 "analixadorSimples.l"
+{printf("%11s: T_LEIA\n", yytext); return T_LEIA;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 19 "analixadorSimples.l"
-printf("%11s: T_ESCREVA\n", yytext);
+#line 22 "analixadorSimples.l"
+{printf("%11s: T_ESCREVA\n", yytext); return T_ESCREVA;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 21 "analixadorSimples.l"
-printf("%11s: T_SE\n", yytext);
+#line 24 "analixadorSimples.l"
+{printf("%11s: T_SE\n", yytext); return T_SE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 22 "analixadorSimples.l"
-printf("%11s: T_ENTAO\n", yytext);
+#line 25 "analixadorSimples.l"
+{printf("%11s: T_ENTAO\n", yytext); return T_ENTAO;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 23 "analixadorSimples.l"
-printf("%11s: T_SENAO\n", yytext);
+#line 26 "analixadorSimples.l"
+{printf("%11s: T_SENAO\n", yytext); return T_SENAO;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 24 "analixadorSimples.l"
-printf("%11s: T_FIMSE\n", yytext);
+#line 27 "analixadorSimples.l"
+{printf("%11s: T_FIMSE\n", yytext); return T_FIMSE;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 26 "analixadorSimples.l"
-printf("%11s: T_ENQTO\n", yytext);
+#line 29 "analixadorSimples.l"
+{printf("%11s: T_ENQTO\n", yytext); return T_ENQTO;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 27 "analixadorSimples.l"
-printf("%11s: T_FACA\n", yytext);
+#line 30 "analixadorSimples.l"
+{printf("%11s: T_FACA\n", yytext); return T_FACA;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 28 "analixadorSimples.l"
-printf("%11s: T_FIMENQTO\n", yytext);
+#line 31 "analixadorSimples.l"
+{printf("%11s: T_FIMENQTO\n", yytext); return T_FIMENQTO;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 30 "analixadorSimples.l"
-printf("%11s: T_MAIS\n", yytext);
+#line 33 "analixadorSimples.l"
+{printf("%11s: T_MAIS\n", yytext); return T_MAIS;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 31 "analixadorSimples.l"
-printf("%11s: T_MENOS\n", yytext);
+#line 34 "analixadorSimples.l"
+{printf("%11s: T_MENOS\n", yytext); return T_MENOS;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 32 "analixadorSimples.l"
-printf("%11s: T_VEZES\n", yytext);
+#line 35 "analixadorSimples.l"
+{printf("%11s: T_VEZES\n", yytext); return T_VEZES;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 33 "analixadorSimples.l"
-printf("%11s: T_DIV\n", yytext);
+#line 36 "analixadorSimples.l"
+{printf("%11s: T_DIV\n", yytext); return T_DIV;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 35 "analixadorSimples.l"
-printf("%11s: T_MAIOR\n", yytext);
+#line 38 "analixadorSimples.l"
+{printf("%11s: T_MAIOR\n", yytext); return T_MAIOR;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 36 "analixadorSimples.l"
-printf("%11s: T_MENOR\n", yytext);
+#line 39 "analixadorSimples.l"
+{printf("%11s: T_MENOR\n", yytext); return T_MENOR;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 37 "analixadorSimples.l"
-printf("%11s: T_IGUAL\n", yytext);
+#line 40 "analixadorSimples.l"
+{printf("%11s: T_IGUAL\n", yytext); return T_IGUAL;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 39 "analixadorSimples.l"
-printf("%11s: T_E\n", yytext);
+#line 42 "analixadorSimples.l"
+{printf("%11s: T_E\n", yytext); return T_E;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 40 "analixadorSimples.l"
-printf("%11s: T_OU\n", yytext);
+#line 43 "analixadorSimples.l"
+{printf("%11s: T_OU\n", yytext); return T_OU;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 41 "analixadorSimples.l"
-printf("%11s: T_NAO\n", yytext);
+#line 44 "analixadorSimples.l"
+{printf("%11s: T_NAO\n", yytext); return T_NAO;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 43 "analixadorSimples.l"
-printf("%11s: T_ATRIB\n", yytext);
+#line 46 "analixadorSimples.l"
+{printf("%11s: T_ATRIB\n", yytext); return T_ATRIB;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 44 "analixadorSimples.l"
-printf("%11s: T_ABRE\n", yytext);
+#line 47 "analixadorSimples.l"
+{printf("%11s: T_ABRE\n", yytext); return T_ABRE;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 45 "analixadorSimples.l"
-printf("%11s: T_FECHA\n", yytext);
+#line 48 "analixadorSimples.l"
+{printf("%11s: T_FECHA\n", yytext); return T_FECHA;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 47 "analixadorSimples.l"
-printf("%11s: T_INTEIRO\n", yytext);
+#line 50 "analixadorSimples.l"
+{printf("%11s: T_INTEIRO\n", yytext); return T_INTEIRO;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 48 "analixadorSimples.l"
-printf("%11s: T_LOGICO\n", yytext);
+#line 51 "analixadorSimples.l"
+{printf("%11s: T_LOGICO\n", yytext); return T_LOGICO;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 49 "analixadorSimples.l"
-printf("%11s: T_V\n", yytext);
+#line 52 "analixadorSimples.l"
+{printf("%11s: T_V\n", yytext); return T_V;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 50 "analixadorSimples.l"
-printf("%11s: T_F\n", yytext);
+#line 53 "analixadorSimples.l"
+{printf("%11s: T_F\n", yytext); return T_F;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 52 "analixadorSimples.l"
-printf("%11s: T_IDENTIF\n", yytext);
+#line 55 "analixadorSimples.l"
+{printf("%11s: T_IDENTIF\n", yytext); return T_IDENTIF;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 53 "analixadorSimples.l"
-printf("%11s: T_NUMERO\n", yytext);
+#line 56 "analixadorSimples.l"
+{printf("%11s: T_NUMERO\n", yytext); return T_NUMERO;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 54 "analixadorSimples.l"
+#line 57 "analixadorSimples.l"
 /* nao faz nada */
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 55 "analixadorSimples.l"
+#line 58 "analixadorSimples.l"
 /* nao faz nada */
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 56 "analixadorSimples.l"
-printf("%s ERRO LEXICO\n", yytext);
+#line 59 "analixadorSimples.l"
+{printf("%s ERRO LEXICO\n", yytext); return -1;}
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 58 "analixadorSimples.l"
+#line 61 "analixadorSimples.l"
 /* ignorar */
 	YY_BREAK
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 59 "analixadorSimples.l"
+#line 62 "analixadorSimples.l"
 /* ignorar */
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 61 "analixadorSimples.l"
+#line 64 "analixadorSimples.l"
 ECHO;
 	YY_BREAK
-#line 981 "lex.yy.c"
+#line 983 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1982,14 +1984,18 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 61 "analixadorSimples.l"
+#line 64 "analixadorSimples.l"
 
 
 int yywrap(void) { return 1; }
 
 int main(void) {
     yyin = fopen("../teste.simples","r");
-    yylex();
+    int lastTag = 0;
+    do {
+    	lastTag = yylex();
+    	if (lastTag) printf("\t\tTag: %d\n",lastTag);
+    } while (lastTag);
     fclose(yyin);
     return 0;
 }
