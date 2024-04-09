@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		InputStream input = null;
 		try {
-			File file = new File("../teste.simples");
+			File file = new File("../avaliacao.simples");
 		    input = new FileInputStream(file);
 
 			

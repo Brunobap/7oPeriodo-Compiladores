@@ -1,13 +1,13 @@
 identificador   [a-zA-Z]([a-zA-Z0-9])*
 numero          [0-9]+
 espaco          [\t ]+
-novalinha       [\n]
+novalinha       [\n\r]
 
 /* comentario de bloco */
-comentarioBlc	[/][*](.|\n)*[*][/]
+comentarioBlc	"/*"([^*]|"*"+[^*/])*"*"+"/"
 
 /* comentario de uma linha */
-comentarioLin	[/][/](.)*[\n]
+comentarioLin	"//"(.)*(\n|\r)+
 
 %{
 	int T_PROGRAMA = 1, T_INICIO = 2, T_FIM = 3, T_LEIA = 4, T_ESCREVA = 5, T_SE = 6, T_ENTAO = 7, T_SENAO = 8, T_FIMSE = 9, T_ENQTO = 10, T_FACA = 11, T_FIMENQTO = 12, T_MAIS = 13, T_MENOS = 14, T_VEZES = 15, T_DIV = 16, T_MAIOR = 17, T_MENOR = 18, T_IGUAL = 19, T_E = 20, T_OU = 21, T_NAO = 22, T_ATRIB = 23, T_FECHA = 24, T_INTEIRO = 25, T_LOGICO = 26, T_V = 27, T_F = 28, T_IDENTIF = 29, T_NUMERO = 30, T_ABRE = 31;
@@ -56,17 +56,18 @@ F               {printf("%11s: T_F\n", yytext); return T_F;}
 {numero}        {printf("%11s: T_NUMERO\n", yytext); return T_NUMERO;}
 {espaco}        /* nao faz nada */
 {novalinha}     /* nao faz nada */
-.               {printf("%s ERRO LEXICO\n", yytext); return -1;}
 
 {comentarioBlc}	/* ignorar */
 {comentarioLin}	/* ignorar */
+
+.               {printf("%d ERRO LEXICO\n", yytext[0]); return -1;}
 
 %%
 
 int yywrap(void) { return 1; }
 
-int main(void) {
-    yyin = fopen("../teste.simples","r");
+int main() {
+    yyin = fopen("../avaliacao.simples","r");
     int lastTag = 0;
     do {
     	lastTag = yylex();

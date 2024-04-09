@@ -64,7 +64,11 @@ public class Lexer {
 				else if (peek == '*') {
 					readch();
 					char temp = peek;
-					while ( temp != '*' && !readch('/')) temp = peek;
+					while (temp != '*' && peek != '/') {
+						temp = peek;
+						readch();
+					}
+					readch();
 				} else return new Token('/');
 		}
 		
