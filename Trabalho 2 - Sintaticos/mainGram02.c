@@ -2,32 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NSIMBOLOS 7
-#define NREGRAS 4
-#define NESTADOS 9
-char alfabeto[NSIMBOLOS+1] = "SLa[];#";
+/* Vocabulário, Regras de Produção de uma gramática e a Tabela de Análise LR(K) para  */
+#define NSIMBOLOS 5
+#define NREGRAS 2
+#define NESTADOS 6
+char alfabeto[NSIMBOLOS+1] = "Sabc#";
 char *regras[NREGRAS] = {
-    "S::=a",
-    "S::=[L]",
-    "S::=S",
-    "S::=L;S",
+    "S::=aSc",
+    "S::=b",
 };
 
 struct {
     char acao;
     int indice;
 } TabSint [NESTADOS][NSIMBOLOS] = {
-    'e',1, ' ',0, 'e',2, 'e',3, ' ',0, ' ',0, ' ',0,
-    ' ',0, ' ',0, ' ',0, ' ',0, ' ',0, ' ',0, ' ',0,
-    ' ',0, ' ',0, 'r',1, 'r',1, 'r',1, 'r',1, 'r',1,
-    'e',4, 'e',5, 'e',2, 'e',3, ' ',0, ' ',0, ' ',0,
-    ' ',0, ' ',0, 'r',3, 'r',3, 'r',3, 'r',3, 'r',3,
-    ' ',0, ' ',0, ' ',0, ' ',0, 'e',6, 'e',7, ' ',0,
-    ' ',0, ' ',0, 'r',2, 'r',2, 'r',2, 'r',2, 'r',2,
-    'e',8, ' ',0, 'e',2, 'e',3, ' ',0, ' ',0, ' ',0,
-    ' ',0, ' ',0, 'r',4, 'r',4, 'r',4, 'r',4, 'r',4,
-}
+    'e',1, 'e',2, 'e',3, ' ',0, ' ',0,
+    ' ',0, ' ',0, ' ',0, ' ',0, 'a',0,
+    'e',4, 'e',2, 'e',3, ' ',0, ' ',0,
+    ' ',0, 'r',2, 'r',2, 'r',2, 'r',2,
+    ' ',0, ' ',0, ' ',0, 'e',5, ' ',0,
+    ' ',0, 'r',1, 'r',1, 'r',1, 'r',1,
+};
 
+/* Pilha sintática utilizada pelo algoritmo de análise LR(K) */
 struct {
     char elem;
     int ind;
@@ -55,7 +52,7 @@ int main() {
 
     traco(79);
     while(!termino) {
-        if (reduzido) s =simboloreduzido;
+        if (reduzido) s = simboloreduzido;
         else s = sentenca[indice];
 
         for (j=0; alfabeto[j] != s && j <= strlen(alfabeto); j++);
@@ -109,6 +106,43 @@ int main() {
                 printf("\n\nDigite '.' para terminar!");
                 while (getchar() != '.');
                 exit(1);
-        }
+        }        
+        /*getchar();*/
     }
+    /* Mostra a série de derivações mais a direita para produzir a sentença */
+    printf("\n\nGramatica:");
+    for (i=0; i < NREGRAS; i++)
+        printf("(%d).  %s\n", i+1, regras[i]);
+    printf("\n\nSequencia de Derivacoes mais a direita:");
+    sentenca[0] = regras[0][0];
+    sentenca[1] = '\0';
+    printf("%s ",sentenca);
+
+    while (indreduz >= 0) {
+        i = strlen(sentenca) -1;
+        while (sentenca[i] < 'A' || sentenca[i] > 'Z') i--;
+        nreducao = reducoes[indreduz--];
+        strins(regras[nreducao], 4, sentenca, i);
+        printf("=%d=> %s ", nreducao+1, sentenca);
+    }
+    printf("\n\nDigite '.' para terminar!");
+    while (getchar()!='.');
+}
+
+/* Desenha uma linha de hífens na tela */
+void traco (int i) {
+    for (int k=0; k < i; k++) printf("-");
+    printf("\n");
+}
+
+/* Insere substring da pos1 até o final de s1 na pos2 do string s2 */
+void strins(char *s1, int pos1, char *s2, int pos2) {
+    int i, tam_s1, tam_s2;
+    for (tam_s1 = 0; s1[tam_s1]; tam_s1++);
+    for (tam_s2 = 0; s2[tam_s2]; tam_s2++);
+    for (i = tam_s2; i >= pos2; i--)
+        s2[i+tam_s1-pos1-1] = s2[i];
+    for (i = pos1; i < tam_s1; i++)
+        s2[i+pos2-pos1] = s1[i];
+    s2[tam_s1+tam_s2-pos1] = '\0';
 }
