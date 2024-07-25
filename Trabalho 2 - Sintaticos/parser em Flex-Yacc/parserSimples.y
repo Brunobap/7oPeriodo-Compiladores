@@ -4,11 +4,13 @@
 	int yylex(void);
 	void  yyerror(char *);
 	#include <stdio.h>
+	#include <stdlib.h>
 %}
 
 %%
 	program:
-		cabecalho variaveis T_INICIO lista_comandos T_FIM { printf("O arquivo esta correto"); } ;
+		cabecalho variaveis T_INICIO 
+		lista_comandos T_FIM { printf("\n --- O arquivo esta correto ---\n\n"); return 1; };
 	
 	cabecalho: T_PROGRAMA T_IDENTIF ;
 
@@ -19,17 +21,19 @@
 		| tipo lista_variaveis
 		;
 
-	tipo: T_LOGICO | T_INTEIRO
+	tipo: T_LOGICO | T_INTEIRO ;
 
 	lista_variaveis:
 		T_IDENTIF lista_variaveis
-		| T_IDENTIF
+		| T_IDENTIF 
+		;
 
 	lista_comandos: comando lista_comandos | ;
 
 	comando:
 		entrada_saida | repeticao |
-		selecao | atribuicao
+		selecao | atribuicao 
+		;
 
 	entrada_saida: leitura | escrita ;
 
@@ -71,7 +75,7 @@ void yyerror(char *s) {
 	printf("%s\n",s);
 }
 
-int main(void) {
+int main() {	
 	yyparse();
 	return 0;
 }

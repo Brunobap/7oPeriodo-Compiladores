@@ -10,7 +10,6 @@ comentarioBlc	"/*"([^*]|"*"+[^*/])*"*"+"/"
 comentarioLin	"//"(.)*(\n|\r)+
 
 %{
-	#include <stdlib.h>
 	#include "y.tab.h"
 	void yyerror(char *);
 %}
@@ -56,9 +55,9 @@ F               return T_F;
 
 {identificador} return T_IDENTIF;
 {numero}        return T_NUMERO;
+
 {espaco}        /* nao faz nada */
 {novalinha}     /* nao faz nada */
-
 {comentarioBlc}	/* ignorar */
 {comentarioLin}	/* ignorar */
 
