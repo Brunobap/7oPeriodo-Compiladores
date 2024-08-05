@@ -66,4 +66,3 @@ F               return T_F;
 %%
 
 int yywrap(void) { return 1; }
-

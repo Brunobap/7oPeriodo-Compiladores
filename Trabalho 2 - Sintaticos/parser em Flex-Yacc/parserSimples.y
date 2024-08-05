@@ -1,16 +1,20 @@
 %token T_PROGRAMA T_INICIO T_FIM T_LEIA T_ESCREVA T_SE T_ENTAO T_SENAO T_FIMSE T_ENQTO T_FACA T_FIMENQTO T_MAIS T_MENOS T_VEZES T_DIV T_MAIOR T_MENOR T_IGUAL T_E T_OU T_NAO T_ATRIB T_FECHA T_INTEIRO T_LOGICO T_V T_F T_IDENTIF T_NUMERO T_ABRE
 
 %{
-	int yylex(void);
-	void  yyerror(char *);
-	#include <stdio.h>
 	#include <stdlib.h>
+	#include<stdio.h>
+
+    void yyerror(char *);
+    int yylex(void);
+
+    extern FILE* yyin;
+
 %}
 
 %%
 	program:
 		cabecalho variaveis T_INICIO 
-		lista_comandos T_FIM { printf("\n --- O arquivo esta correto ---\n\n"); return 1; };
+		lista_comandos T_FIM { printf("\n --- O arquivo esta correto ---\n\n"); };
 	
 	cabecalho: T_PROGRAMA T_IDENTIF ;
 
@@ -75,7 +79,8 @@ void yyerror(char *s) {
 	printf("%s\n",s);
 }
 
-int main() {	
-	yyparse();
-	return 0;
+void main(int argc, char **argv) {
+  yyin = fopen(argv[1], "r");
+  yyparse();
+  fclose(yyin);
 }

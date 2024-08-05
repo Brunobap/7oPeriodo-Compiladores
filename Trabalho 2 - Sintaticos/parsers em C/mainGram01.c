@@ -5,7 +5,7 @@
 /* Vocabulário, Regras de Produção de uma gramática e a Tabela de Análise LR(K) para  */
 #define NSIMBOLOS 6
 #define NREGRAS 4
-#define NESTADOS 9
+#define NESTADOS 10
 char alfabeto[NSIMBOLOS+1] = "E+*ab#";
 char *regras[NREGRAS] = {
     "E::=+EE",
@@ -117,9 +117,11 @@ int main() {
     }
     /* Mostra a série de derivações mais a direita para produzir a sentença */
     printf("\n\nGramatica:");
+    printf("\n==========\n");
     for (i=0; i < NREGRAS; i++)
         printf("(%d).  %s\n", i+1, regras[i]);
     printf("\n\nSequencia de Derivacoes mais a direita:");
+    printf("\n=======================================\n");
     sentenca[0] = regras[0][0];
     sentenca[1] = '\0';
     printf("%s ",sentenca);

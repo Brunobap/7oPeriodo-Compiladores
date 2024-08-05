@@ -26,7 +26,7 @@ struct {
     ' ',0, ' ',0, ' ',0, ' ',0, 'e',6, 'e',7, ' ',0,
     ' ',0, ' ',0, 'r',2, 'r',2, 'r',2, 'r',2, 'r',2,
     'e',8, ' ',0, 'e',2, 'e',3, ' ',0, ' ',0, ' ',0,
-    ' ',0, ' ',0, 'r',4, 'r',4, 'r',4, 'r',4, 'r',4,
+    ' ',0, ' ',0, 'r',4, 'r',4, 'r',4, 'r',4, 'r',4
 };
 
 /* Pilha sintática utilizada pelo algoritmo de análise LR(K) */
@@ -116,9 +116,11 @@ int main() {
     }
     /* Mostra a série de derivações mais a direita para produzir a sentença */
     printf("\n\nGramatica:");
+    printf("\n==========\n");
     for (i=0; i < NREGRAS; i++)
         printf("(%d).  %s\n", i+1, regras[i]);
     printf("\n\nSequencia de Derivacoes mais a direita:");
+    printf("\n=======================================\n");
     sentenca[0] = regras[0][0];
     sentenca[1] = '\0';
     printf("%s ",sentenca);
