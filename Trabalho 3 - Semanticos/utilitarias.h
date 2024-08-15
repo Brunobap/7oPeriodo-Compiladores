@@ -13,9 +13,9 @@ int TOPO_PSEMA = 0; // TOPO da pilha semantica
 int ROTULO = 0; // Proximo numero de rotulo
 int CONTA_VARS = 0; // Núm. de variáveis
 int POS_SIMB; // Pos. na tabela de simbolos
-int aux; // Variável auxiliar
+int aux1 = 0, aux2 = 0, aux3 = 0; // Variáveis auxiliares
 int numLinha = 1; // Núm. da linha no programa
-char atomo[30]; // nome de um ident. ou numero
+char atomo[255][30]; // nome de um ident. ou numero
 
 // Rotina geral de tratamento de erro
 void ERRO (char *msg, ...){
@@ -32,8 +32,9 @@ void ERRO (char *msg, ...){
 }
 
 // Tabela de Simbolos
-struct elem_tab_simbolos{
+struct simbolo{
     char id[30];
+    int tipo;
     int desloca;
 } TSIMB [TAM_TSIMB], elem_tab;
 
@@ -50,12 +51,19 @@ int busca_simbolo(char *ident){
     for (; strcmp(TSIMB[i].id, ident) && i >= 0; i--);
     return i;
 }
+struct simbolo busca_retorna_simbolo(char *ident){
+    int i = TOPO_TSIMB-1;
+    for (; strcmp(TSIMB[i].id, ident) && i >= 0; i--);
+
+    if (i!=-1) return TSIMB[i];
+    else ERRO("Simbolo desconhecido: [%s] ",ident);
+}
 
 /*
 Função que INSERE um simbolo na tabela de simbolos.
     Se já existe um simbolo com mesmo nome e mesmo nível uma mensagem de erro é apresentada e o programa é interrompido.
 */
-void insere_simbolo(struct elem_tab_simbolos *elem){
+void insere_simbolo(struct simbolo *elem){
     if (TOPO_TSIMB == TAM_TSIMB)
         ERRO("OVERFLOW - tabela de simbolos");
     else {
@@ -68,10 +76,12 @@ void insere_simbolo(struct elem_tab_simbolos *elem){
 }
 
 // Função de inserção de uma variável na tabela de simbolos
-void insere_variavel(char *ident){
+void insere_variavel(char *ident, int tipo){
     strcpy(elem_tab.id, ident);
     elem_tab.desloca = CONTA_VARS;
+    elem_tab.tipo = tipo;
     insere_simbolo(&elem_tab);
+    CONTA_VARS++;
 }
 
 // Rotinas para manutenção da PILHA SEMANTICA

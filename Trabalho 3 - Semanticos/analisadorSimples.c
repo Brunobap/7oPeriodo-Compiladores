@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 3 "<stdout>"
 
 #define  YY_INT_ALIGNED short int
 
@@ -513,10 +513,10 @@ char *yytext;
 /* comentario de bloco */
 /* comentario de uma linha */
 #line 13 "analisadorSimples.l"
-	#include "y.tab.h"
+	#include "parserSimples.h"
 	void yyerror(char *);
-#line 519 "lex.yy.c"
-#line 520 "lex.yy.c"
+#line 519 "<stdout>"
+#line 520 "<stdout>"
 
 #define INITIAL 0
 
@@ -735,7 +735,7 @@ YY_DECL
 	{
 #line 17 "analisadorSimples.l"
 
-#line 739 "lex.yy.c"
+#line 739 "<stdout>"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -940,12 +940,12 @@ return T_F;
 case 30:
 YY_RULE_SETUP
 #line 56 "analisadorSimples.l"
-{ strcpy(atomo,yytext); return T_IDENTIF; }
+{ strcpy(atomo[aux1++],yytext); return T_IDENTIF; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 57 "analisadorSimples.l"
-{ strcpy(atomo,yytext); return T_NUMERO; }
+{ aux3 = atoi(yytext); return T_NUMERO; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
@@ -961,26 +961,26 @@ numLinha++;
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 61 "analisadorSimples.l"
+#line 62 "analisadorSimples.l"
 /* ignorar */
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 62 "analisadorSimples.l"
+#line 63 "analisadorSimples.l"
 /* ignorar */
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 64 "analisadorSimples.l"
-{yyerror("ERRO LEXICO\n"); return -1;}
+#line 65 "analisadorSimples.l"
+{ yyerror("ERRO LEXICO\n"); return -1; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 66 "analisadorSimples.l"
+#line 67 "analisadorSimples.l"
 ECHO;
 	YY_BREAK
-#line 984 "lex.yy.c"
+#line 984 "<stdout>"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1985,7 +1985,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 66 "analisadorSimples.l"
+#line 67 "analisadorSimples.l"
 
 
 int yywrap(void) { return 1; }

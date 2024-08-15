@@ -10,7 +10,7 @@ comentarioBlc	"/*"([^*]|"*"+[^*/])*"*"+"/"
 comentarioLin	"//"(.)*(\n|\r)+
 
 %{
-	#include "y.tab.h"
+	#include "parserSimples.h"
 	void yyerror(char *);
 %}
 
@@ -53,15 +53,16 @@ logico          return T_LOGICO;
 V               return T_V;
 F               return T_F;
 
-{identificador} { strcpy(atomo,yytext); return T_IDENTIF; }
-{numero}        { strcpy(atomo,yytext); return T_NUMERO; }
+{identificador} { strcpy(atomo[aux1++],yytext); return T_IDENTIF; }
+{numero}        { aux3 = atoi(yytext); return T_NUMERO; }
 
 {espaco}        /* nao faz nada */
 {novalinha}     numLinha++;
+
 {comentarioBlc}	/* ignorar */
 {comentarioLin}	/* ignorar */
 
-.               {yyerror("ERRO LEXICO\n"); return -1;}
+.               { yyerror("ERRO LEXICO\n"); return -1; }
 
 %%
 

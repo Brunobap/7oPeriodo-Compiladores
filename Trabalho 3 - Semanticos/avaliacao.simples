@@ -1,5 +1,5 @@
 programa repete
-	inteiro i j 1
+	inteiro i j
 inicio
 	i <- 1
 	enquanto 1 < 10 faca
