@@ -39,12 +39,12 @@
 
 	tipo: 
 		T_LOGICO { aux2 = T_LOGICO; }
-		| T_INTEIRO { aux2 = T_INTEIRO; }
+		| T_INTEIRO { aux2 = T_NUMERO; }
 		;
 
 	lista_variaveis:
-		T_IDENTIF {	insere_variavel(atomo[--aux1], aux2); empilha(0); } lista_variaveis
-		| T_IDENTIF { insere_variavel(atomo[--aux1], aux2); empilha(0); }
+		T_IDENTIF {	insere_variavel(atomo[--aux1]); empilha(aux2); } lista_variaveis
+		| T_IDENTIF { insere_variavel(atomo[--aux1]); empilha(aux2); }
 		;
 
 	lista_comandos: comando lista_comandos | ;
@@ -57,7 +57,7 @@
 	leitura: 
 		T_LEIA 	{ printf("\tLEIA\n"); }
 		T_IDENTIF {
-			int deslocamento = busca_simbolo(atomo[--aux1]);
+			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
 			printf("\tARZG %d\n",deslocamento);
 		};
 
@@ -79,41 +79,88 @@
 		};
 
 	expressao:
-		expressao T_VEZES expressao
-		| expressao T_DIV expressao
-		| expressao T_MAIS expressao
-		| expressao T_MENOS expressao
-		| expressao T_MAIOR expressao
-		| expressao T_MENOR expressao
-		| expressao T_IGUAL expressao
-		| expressao T_E expressao
-		| expressao T_OU expressao
-		| termo
-		;
+		expressao T_VEZES expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tMULT\n");
+			empilha(T_NUMERO); }
+
+		| expressao T_DIV expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tDIVI\n");
+			empilha(T_NUMERO); }
+
+		| expressao T_MAIS expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tSOMA\n");
+			empilha(T_NUMERO); }
+
+		| expressao T_MENOS expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tSUBT\n");
+			empilha(T_NUMERO); }
+
+		| expressao T_MAIOR expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMMA\n");
+			empilha(T_LOGICO); }
+
+		| expressao T_MENOR expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMME\n");
+			empilha(T_LOGICO); }
+
+		| expressao T_IGUAL expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMIG\n");
+			empilha(T_LOGICO); }
+
+		| expressao T_E expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			printf("\tCONJ\n");
+			empilha(T_LOGICO); }
+
+		| expressao T_OU expressao {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			printf("\tDISJ\n");
+			empilha(T_LOGICO); }
+
+		| termo ;
 
 	termo:
 		T_IDENTIF {
-			struct simbolo var = busca_retorna_simbolo(atomo[--aux1]);
-			printf("\tCRVG %d\n",var.desloca);
-
-			int valor = PSEMA[var.desloca]; 
-			aux2 = var.tipo;
-			empilha(valor); }
+			int var = busca_retorna_simbolo(atomo[--aux1]).desloca;
+			printf("\tCRVG %d\n",var);
+			empilha(PSEMA[var]); }
 
 		| T_NUMERO { 
 			printf("\tCRCT %d\n",aux3); 
-			aux2 = T_NUMERO; 
-			empilha(aux3); }
+			empilha(T_NUMERO); }
 
 		| T_V { 
 			printf("\tCRCT 1\n"); 
-			aux2 = T_V;
-			empilha(1); }
+			empilha(T_LOGICO); }
 
 		| T_F { 
 			printf("\tCRCT 0\n"); 
-			aux2 = T_F;
-			empilha(0); }
+			empilha(T_LOGICO); }
 
 		| T_NAO termo { 
 			printf("\tNEGA\n"); }

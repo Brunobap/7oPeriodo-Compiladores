@@ -11,16 +11,16 @@ programa repete
 
 /*INICIO*/
 inicio
-	j <- 1
+	i <- 1
 	leia j
 	/*ENQUANTO*/
-	enquanto nao (i < 10) faca
+	enquanto nao (i > 10) faca
 		j <- 1
 		/*
 		ENQUANTO
 		*/
 		enquanto j < 10 faca
-			escreva i + j
+			escreva i * j
 			j <- j + 1
 		fimenquanto
 		i <- i + 1

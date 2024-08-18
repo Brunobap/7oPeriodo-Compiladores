@@ -34,8 +34,8 @@ void ERRO (char *msg, ...){
 // Tabela de Simbolos
 struct simbolo{
     char id[30];
-    int tipo;
     int desloca;
+    int tipo;
 } TSIMB [TAM_TSIMB], elem_tab;
 
 // Pilha Semantica
@@ -55,7 +55,7 @@ struct simbolo busca_retorna_simbolo(char *ident){
     int i = TOPO_TSIMB-1;
     for (; strcmp(TSIMB[i].id, ident) && i >= 0; i--);
 
-    if (i!=-1) return TSIMB[i];
+    if (i != -1) return TSIMB[i];
     else ERRO("Simbolo desconhecido: [%s] ",ident);
 }
 
@@ -76,10 +76,9 @@ void insere_simbolo(struct simbolo *elem){
 }
 
 // Função de inserção de uma variável na tabela de simbolos
-void insere_variavel(char *ident, int tipo){
+void insere_variavel(char *ident) {
     strcpy(elem_tab.id, ident);
     elem_tab.desloca = CONTA_VARS;
-    elem_tab.tipo = tipo;
     insere_simbolo(&elem_tab);
     CONTA_VARS++;
 }

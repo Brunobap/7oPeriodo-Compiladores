@@ -549,13 +549,13 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int8 yyrline[] =
+static const yytype_uint8 yyrline[] =
 {
        0,    25,    25,    26,    25,    31,    33,    33,    36,    37,
       41,    42,    46,    46,    47,    50,    50,    53,    53,    53,
       53,    55,    55,    58,    58,    65,    68,    72,    76,    82,
-      83,    84,    85,    86,    87,    88,    89,    90,    91,    95,
-     103,   108,   113,   118,   121
+      89,    96,   103,   110,   117,   124,   131,   138,   145,   148,
+     153,   157,   161,   165,   168
 };
 #endif
 
@@ -1198,19 +1198,19 @@ yyreduce:
 
   case 11: /* tipo: T_INTEIRO  */
 #line 42 "parserSimples.y"
-                            { aux2 = T_INTEIRO; }
+                            { aux2 = T_NUMERO; }
 #line 1203 "parserSimples.c"
     break;
 
   case 12: /* $@3: %empty  */
 #line 46 "parserSimples.y"
-                          {	insere_variavel(atomo[--aux1], aux2); empilha(0); }
+                          {	insere_variavel(atomo[--aux1]); empilha(aux2); }
 #line 1209 "parserSimples.c"
     break;
 
   case 14: /* lista_variaveis: T_IDENTIF  */
 #line 47 "parserSimples.y"
-                            { insere_variavel(atomo[--aux1], aux2); empilha(0); }
+                            { insere_variavel(atomo[--aux1]); empilha(aux2); }
 #line 1215 "parserSimples.c"
     break;
 
@@ -1223,7 +1223,7 @@ yyreduce:
   case 24: /* leitura: T_LEIA $@4 T_IDENTIF  */
 #line 59 "parserSimples.y"
                           {
-			int deslocamento = busca_simbolo(atomo[--aux1]);
+			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
 			printf("\tARZG %d\n",deslocamento);
 		}
 #line 1230 "parserSimples.c"
@@ -1244,54 +1244,147 @@ yyreduce:
 #line 1245 "parserSimples.c"
     break;
 
-  case 39: /* termo: T_IDENTIF  */
-#line 95 "parserSimples.y"
-                          {
-			struct simbolo var = busca_retorna_simbolo(atomo[--aux1]);
-			printf("\tCRVG %d\n",var.desloca);
+  case 29: /* expressao: expressao T_VEZES expressao  */
+#line 82 "parserSimples.y"
+                                            {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tMULT\n");
+			empilha(T_NUMERO); }
+#line 1256 "parserSimples.c"
+    break;
 
-			int valor = PSEMA[var.desloca]; 
-			aux2 = var.tipo;
-			empilha(valor); }
-#line 1257 "parserSimples.c"
+  case 30: /* expressao: expressao T_DIV expressao  */
+#line 89 "parserSimples.y"
+                                            {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tDIVI\n");
+			empilha(T_NUMERO); }
+#line 1267 "parserSimples.c"
+    break;
+
+  case 31: /* expressao: expressao T_MAIS expressao  */
+#line 96 "parserSimples.y"
+                                             {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tSOMA\n");
+			empilha(T_NUMERO); }
+#line 1278 "parserSimples.c"
+    break;
+
+  case 32: /* expressao: expressao T_MENOS expressao  */
+#line 103 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
+			printf("\tSUBT\n");
+			empilha(T_NUMERO); }
+#line 1289 "parserSimples.c"
+    break;
+
+  case 33: /* expressao: expressao T_MAIOR expressao  */
+#line 110 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMMA\n");
+			empilha(T_LOGICO); }
+#line 1300 "parserSimples.c"
+    break;
+
+  case 34: /* expressao: expressao T_MENOR expressao  */
+#line 117 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMME\n");
+			empilha(T_LOGICO); }
+#line 1311 "parserSimples.c"
+    break;
+
+  case 35: /* expressao: expressao T_IGUAL expressao  */
+#line 124 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			printf("\tCMIG\n");
+			empilha(T_LOGICO); }
+#line 1322 "parserSimples.c"
+    break;
+
+  case 36: /* expressao: expressao T_E expressao  */
+#line 131 "parserSimples.y"
+                                          {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			printf("\tCONJ\n");
+			empilha(T_LOGICO); }
+#line 1333 "parserSimples.c"
+    break;
+
+  case 37: /* expressao: expressao T_OU expressao  */
+#line 138 "parserSimples.y"
+                                           {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			printf("\tDISJ\n");
+			empilha(T_LOGICO); }
+#line 1344 "parserSimples.c"
+    break;
+
+  case 39: /* termo: T_IDENTIF  */
+#line 148 "parserSimples.y"
+                          {
+			int var = busca_retorna_simbolo(atomo[--aux1]).desloca;
+			printf("\tCRVG %d\n",var);
+			empilha(PSEMA[var]); }
+#line 1353 "parserSimples.c"
     break;
 
   case 40: /* termo: T_NUMERO  */
-#line 103 "parserSimples.y"
+#line 153 "parserSimples.y"
                            { 
 			printf("\tCRCT %d\n",aux3); 
-			aux2 = T_NUMERO; 
-			empilha(aux3); }
-#line 1266 "parserSimples.c"
+			empilha(T_NUMERO); }
+#line 1361 "parserSimples.c"
     break;
 
   case 41: /* termo: T_V  */
-#line 108 "parserSimples.y"
+#line 157 "parserSimples.y"
                       { 
 			printf("\tCRCT 1\n"); 
-			aux2 = T_V;
-			empilha(1); }
-#line 1275 "parserSimples.c"
+			empilha(T_LOGICO); }
+#line 1369 "parserSimples.c"
     break;
 
   case 42: /* termo: T_F  */
-#line 113 "parserSimples.y"
+#line 161 "parserSimples.y"
                       { 
 			printf("\tCRCT 0\n"); 
-			aux2 = T_F;
-			empilha(0); }
-#line 1284 "parserSimples.c"
+			empilha(T_LOGICO); }
+#line 1377 "parserSimples.c"
     break;
 
   case 43: /* termo: T_NAO termo  */
-#line 118 "parserSimples.y"
+#line 165 "parserSimples.y"
                               { 
 			printf("\tNEGA\n"); }
-#line 1291 "parserSimples.c"
+#line 1384 "parserSimples.c"
     break;
 
 
-#line 1295 "parserSimples.c"
+#line 1388 "parserSimples.c"
 
       default: break;
     }
@@ -1484,7 +1577,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 123 "parserSimples.y"
+#line 170 "parserSimples.y"
 
 
 
