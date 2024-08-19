@@ -41,29 +41,39 @@ Grammar
 
    24 escrita: T_ESCREVA expressao
 
-   25 repeticao: T_ENQTO expressao T_FACA lista_comandos T_FIMENQTO
+   25 $@5: ε
 
-   26 selecao: T_SE expressao T_ENTAO lista_comandos T_SENAO lista_comandos T_FIMSE
+   26 $@6: ε
 
-   27 atribuicao: T_IDENTIF T_ATRIB expressao
+   27 repeticao: T_ENQTO $@5 expressao $@6 T_FACA lista_comandos T_FIMENQTO
 
-   28 expressao: expressao T_VEZES expressao
-   29          | expressao T_DIV expressao
-   30          | expressao T_MAIS expressao
-   31          | expressao T_MENOS expressao
-   32          | expressao T_MAIOR expressao
-   33          | expressao T_MENOR expressao
-   34          | expressao T_IGUAL expressao
-   35          | expressao T_E expressao
-   36          | expressao T_OU expressao
-   37          | termo
+   28 $@7: ε
 
-   38 termo: T_IDENTIF
-   39      | T_NUMERO
-   40      | T_V
-   41      | T_F
-   42      | T_NAO termo
-   43      | T_ABRE expressao T_FECHA
+   29 $@8: ε
+
+   30 $@9: ε
+
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
+
+   32 atribuicao: T_IDENTIF T_ATRIB expressao
+
+   33 expressao: expressao T_VEZES expressao
+   34          | expressao T_DIV expressao
+   35          | expressao T_MAIS expressao
+   36          | expressao T_MENOS expressao
+   37          | expressao T_MAIOR expressao
+   38          | expressao T_MENOR expressao
+   39          | expressao T_IGUAL expressao
+   40          | expressao T_E expressao
+   41          | expressao T_OU expressao
+   42          | termo
+
+   43 termo: T_IDENTIF
+   44      | T_NUMERO
+   45      | T_V
+   46      | T_F
+   47      | T_NAO termo
+   48      | T_ABRE expressao T_FECHA
 
 
 Terminals, with rules where they appear
@@ -75,32 +85,32 @@ Terminals, with rules where they appear
     T_FIM (260) 3
     T_LEIA (261) 23
     T_ESCREVA (262) 24
-    T_SE (263) 26
-    T_ENTAO (264) 26
-    T_SENAO (265) 26
-    T_FIMSE (266) 26
-    T_ENQTO (267) 25
-    T_FACA (268) 25
-    T_FIMENQTO (269) 25
-    T_MAIS (270) 30
-    T_MENOS (271) 31
-    T_VEZES (272) 28
-    T_DIV (273) 29
-    T_MAIOR (274) 32
-    T_MENOR (275) 33
-    T_IGUAL (276) 34
-    T_E (277) 35
-    T_OU (278) 36
-    T_NAO (279) 42
-    T_ATRIB (280) 27
-    T_FECHA (281) 43
+    T_SE (263) 31
+    T_ENTAO (264) 31
+    T_SENAO (265) 31
+    T_FIMSE (266) 31
+    T_ENQTO (267) 27
+    T_FACA (268) 27
+    T_FIMENQTO (269) 27
+    T_MAIS (270) 35
+    T_MENOS (271) 36
+    T_VEZES (272) 33
+    T_DIV (273) 34
+    T_MAIOR (274) 37
+    T_MENOR (275) 38
+    T_IGUAL (276) 39
+    T_E (277) 40
+    T_OU (278) 41
+    T_NAO (279) 47
+    T_ATRIB (280) 32
+    T_FECHA (281) 48
     T_INTEIRO (282) 10
     T_LOGICO (283) 9
-    T_V (284) 40
-    T_F (285) 41
-    T_IDENTIF (286) 4 12 13 23 27 38
-    T_NUMERO (287) 39
-    T_ABRE (288) 43
+    T_V (284) 45
+    T_F (285) 46
+    T_IDENTIF (286) 4 12 13 23 32 43
+    T_NUMERO (287) 44
+    T_ABRE (288) 48
 
 
 Nonterminals, with rules where they appear
@@ -136,7 +146,7 @@ Nonterminals, with rules where they appear
         on right: 12
     lista_comandos (44)
         on left: 14 15
-        on right: 3 14 25 26
+        on right: 3 14 27 31
     comando (45)
         on left: 16 17 18 19
         on right: 14
@@ -153,20 +163,35 @@ Nonterminals, with rules where they appear
         on left: 24
         on right: 21
     repeticao (50)
-        on left: 25
-        on right: 17
-    selecao (51)
-        on left: 26
-        on right: 18
-    atribuicao (52)
         on left: 27
+        on right: 17
+    $@5 (51)
+        on left: 25
+        on right: 27
+    $@6 (52)
+        on left: 26
+        on right: 27
+    selecao (53)
+        on left: 31
+        on right: 18
+    $@7 (54)
+        on left: 28
+        on right: 31
+    $@8 (55)
+        on left: 29
+        on right: 31
+    $@9 (56)
+        on left: 30
+        on right: 31
+    atribuicao (57)
+        on left: 32
         on right: 19
-    expressao (53)
-        on left: 28 29 30 31 32 33 34 35 36 37
-        on right: 24 25 26 27 28 29 30 31 32 33 34 35 36 43
-    termo (54)
-        on left: 38 39 40 41 42 43
-        on right: 37 42
+    expressao (58)
+        on left: 33 34 35 36 37 38 39 40 41 42
+        on right: 24 27 31 32 33 34 35 36 37 38 39 40 41 48
+    termo (59)
+        on left: 43 44 45 46 47 48
+        on right: 42 47
 
 
 State 0
@@ -366,37 +391,25 @@ State 19
 
 State 20
 
-   26 selecao: T_SE • expressao T_ENTAO lista_comandos T_SENAO lista_comandos T_FIMSE
+   31 selecao: T_SE • $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
 
-    T_NAO      shift, and go to state 33
-    T_V        shift, and go to state 34
-    T_F        shift, and go to state 35
-    T_IDENTIF  shift, and go to state 36
-    T_NUMERO   shift, and go to state 37
-    T_ABRE     shift, and go to state 38
+    $default  reduce using rule 28 ($@7)
 
-    expressao  go to state 41
-    termo      go to state 40
+    $@7  go to state 41
 
 
 State 21
 
-   25 repeticao: T_ENQTO • expressao T_FACA lista_comandos T_FIMENQTO
+   27 repeticao: T_ENQTO • $@5 expressao $@6 T_FACA lista_comandos T_FIMENQTO
 
-    T_NAO      shift, and go to state 33
-    T_V        shift, and go to state 34
-    T_F        shift, and go to state 35
-    T_IDENTIF  shift, and go to state 36
-    T_NUMERO   shift, and go to state 37
-    T_ABRE     shift, and go to state 38
+    $default  reduce using rule 25 ($@5)
 
-    expressao  go to state 42
-    termo      go to state 40
+    $@5  go to state 42
 
 
 State 22
 
-   27 atribuicao: T_IDENTIF • T_ATRIB expressao
+   32 atribuicao: T_IDENTIF • T_ATRIB expressao
 
     T_ATRIB  shift, and go to state 43
 
@@ -488,7 +501,7 @@ State 32
 
 State 33
 
-   42 termo: T_NAO • termo
+   47 termo: T_NAO • termo
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -502,35 +515,35 @@ State 33
 
 State 34
 
-   40 termo: T_V •
+   45 termo: T_V •
 
-    $default  reduce using rule 40 (termo)
+    $default  reduce using rule 45 (termo)
 
 
 State 35
 
-   41 termo: T_F •
+   46 termo: T_F •
 
-    $default  reduce using rule 41 (termo)
+    $default  reduce using rule 46 (termo)
 
 
 State 36
 
-   38 termo: T_IDENTIF •
+   43 termo: T_IDENTIF •
 
-    $default  reduce using rule 38 (termo)
+    $default  reduce using rule 43 (termo)
 
 
 State 37
 
-   39 termo: T_NUMERO •
+   44 termo: T_NUMERO •
 
-    $default  reduce using rule 39 (termo)
+    $default  reduce using rule 44 (termo)
 
 
 State 38
 
-   43 termo: T_ABRE • expressao T_FECHA
+   48 termo: T_ABRE • expressao T_FECHA
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -546,15 +559,15 @@ State 38
 State 39
 
    24 escrita: T_ESCREVA expressao •
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
 
     T_MAIS   shift, and go to state 49
     T_MENOS  shift, and go to state 50
@@ -571,64 +584,44 @@ State 39
 
 State 40
 
-   37 expressao: termo •
+   42 expressao: termo •
 
-    $default  reduce using rule 37 (expressao)
+    $default  reduce using rule 42 (expressao)
 
 
 State 41
 
-   26 selecao: T_SE expressao • T_ENTAO lista_comandos T_SENAO lista_comandos T_FIMSE
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
+   31 selecao: T_SE $@7 • expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
 
-    T_ENTAO  shift, and go to state 58
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-    T_MAIOR  shift, and go to state 53
-    T_MENOR  shift, and go to state 54
-    T_IGUAL  shift, and go to state 55
-    T_E      shift, and go to state 56
-    T_OU     shift, and go to state 57
+    T_NAO      shift, and go to state 33
+    T_V        shift, and go to state 34
+    T_F        shift, and go to state 35
+    T_IDENTIF  shift, and go to state 36
+    T_NUMERO   shift, and go to state 37
+    T_ABRE     shift, and go to state 38
+
+    expressao  go to state 58
+    termo      go to state 40
 
 
 State 42
 
-   25 repeticao: T_ENQTO expressao • T_FACA lista_comandos T_FIMENQTO
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
+   27 repeticao: T_ENQTO $@5 • expressao $@6 T_FACA lista_comandos T_FIMENQTO
 
-    T_FACA   shift, and go to state 59
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-    T_MAIOR  shift, and go to state 53
-    T_MENOR  shift, and go to state 54
-    T_IGUAL  shift, and go to state 55
-    T_E      shift, and go to state 56
-    T_OU     shift, and go to state 57
+    T_NAO      shift, and go to state 33
+    T_V        shift, and go to state 34
+    T_F        shift, and go to state 35
+    T_IDENTIF  shift, and go to state 36
+    T_NUMERO   shift, and go to state 37
+    T_ABRE     shift, and go to state 38
+
+    expressao  go to state 59
+    termo      go to state 40
 
 
 State 43
 
-   27 atribuicao: T_IDENTIF T_ATRIB • expressao
+   32 atribuicao: T_IDENTIF T_ATRIB • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -664,23 +657,23 @@ State 46
 
 State 47
 
-   42 termo: T_NAO termo •
+   47 termo: T_NAO termo •
 
-    $default  reduce using rule 42 (termo)
+    $default  reduce using rule 47 (termo)
 
 
 State 48
 
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-   43 termo: T_ABRE expressao • T_FECHA
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+   48 termo: T_ABRE expressao • T_FECHA
 
     T_MAIS   shift, and go to state 49
     T_MENOS  shift, and go to state 50
@@ -696,7 +689,7 @@ State 48
 
 State 49
 
-   30 expressao: expressao T_MAIS • expressao
+   35 expressao: expressao T_MAIS • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -711,7 +704,7 @@ State 49
 
 State 50
 
-   31 expressao: expressao T_MENOS • expressao
+   36 expressao: expressao T_MENOS • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -726,7 +719,7 @@ State 50
 
 State 51
 
-   28 expressao: expressao T_VEZES • expressao
+   33 expressao: expressao T_VEZES • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -741,7 +734,7 @@ State 51
 
 State 52
 
-   29 expressao: expressao T_DIV • expressao
+   34 expressao: expressao T_DIV • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -756,7 +749,7 @@ State 52
 
 State 53
 
-   32 expressao: expressao T_MAIOR • expressao
+   37 expressao: expressao T_MAIOR • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -771,7 +764,7 @@ State 53
 
 State 54
 
-   33 expressao: expressao T_MENOR • expressao
+   38 expressao: expressao T_MENOR • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -786,7 +779,7 @@ State 54
 
 State 55
 
-   34 expressao: expressao T_IGUAL • expressao
+   39 expressao: expressao T_IGUAL • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -801,7 +794,7 @@ State 55
 
 State 56
 
-   35 expressao: expressao T_E • expressao
+   40 expressao: expressao T_E • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -816,7 +809,7 @@ State 56
 
 State 57
 
-   36 expressao: expressao T_OU • expressao
+   41 expressao: expressao T_OU • expressao
 
     T_NAO      shift, and go to state 33
     T_V        shift, and go to state 34
@@ -831,60 +824,16 @@ State 57
 
 State 58
 
-   26 selecao: T_SE expressao T_ENTAO • lista_comandos T_SENAO lista_comandos T_FIMSE
-
-    T_LEIA     shift, and go to state 18
-    T_ESCREVA  shift, and go to state 19
-    T_SE       shift, and go to state 20
-    T_ENQTO    shift, and go to state 21
-    T_IDENTIF  shift, and go to state 22
-
-    $default  reduce using rule 15 (lista_comandos)
-
-    lista_comandos  go to state 71
-    comando         go to state 24
-    entrada_saida   go to state 25
-    leitura         go to state 26
-    escrita         go to state 27
-    repeticao       go to state 28
-    selecao         go to state 29
-    atribuicao      go to state 30
-
-
-State 59
-
-   25 repeticao: T_ENQTO expressao T_FACA • lista_comandos T_FIMENQTO
-
-    T_LEIA     shift, and go to state 18
-    T_ESCREVA  shift, and go to state 19
-    T_SE       shift, and go to state 20
-    T_ENQTO    shift, and go to state 21
-    T_IDENTIF  shift, and go to state 22
-
-    $default  reduce using rule 15 (lista_comandos)
-
-    lista_comandos  go to state 72
-    comando         go to state 24
-    entrada_saida   go to state 25
-    leitura         go to state 26
-    escrita         go to state 27
-    repeticao       go to state 28
-    selecao         go to state 29
-    atribuicao      go to state 30
-
-
-State 60
-
-   27 atribuicao: T_IDENTIF T_ATRIB expressao •
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
+   31 selecao: T_SE $@7 expressao • $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
 
     T_MAIS   shift, and go to state 49
     T_MENOS  shift, and go to state 50
@@ -896,187 +845,219 @@ State 60
     T_E      shift, and go to state 56
     T_OU     shift, and go to state 57
 
-    $default  reduce using rule 27 (atribuicao)
+    $default  reduce using rule 29 ($@8)
+
+    $@8  go to state 71
+
+
+State 59
+
+   27 repeticao: T_ENQTO $@5 expressao • $@6 T_FACA lista_comandos T_FIMENQTO
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+    T_MAIOR  shift, and go to state 53
+    T_MENOR  shift, and go to state 54
+    T_IGUAL  shift, and go to state 55
+    T_E      shift, and go to state 56
+    T_OU     shift, and go to state 57
+
+    $default  reduce using rule 26 ($@6)
+
+    $@6  go to state 72
+
+
+State 60
+
+   32 atribuicao: T_IDENTIF T_ATRIB expressao •
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+    T_MAIOR  shift, and go to state 53
+    T_MENOR  shift, and go to state 54
+    T_IGUAL  shift, and go to state 55
+    T_E      shift, and go to state 56
+    T_OU     shift, and go to state 57
+
+    $default  reduce using rule 32 (atribuicao)
 
 
 State 61
 
-   43 termo: T_ABRE expressao T_FECHA •
+   48 termo: T_ABRE expressao T_FECHA •
 
-    $default  reduce using rule 43 (termo)
+    $default  reduce using rule 48 (termo)
 
 
 State 62
 
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   30          | expressao T_MAIS expressao •
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   35          | expressao T_MAIS expressao •
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
 
     T_VEZES  shift, and go to state 51
     T_DIV    shift, and go to state 52
-
-    $default  reduce using rule 30 (expressao)
-
-
-State 63
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   31          | expressao T_MENOS expressao •
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-
-    $default  reduce using rule 31 (expressao)
-
-
-State 64
-
-   28 expressao: expressao • T_VEZES expressao
-   28          | expressao T_VEZES expressao •
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    $default  reduce using rule 28 (expressao)
-
-
-State 65
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   29          | expressao T_DIV expressao •
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    $default  reduce using rule 29 (expressao)
-
-
-State 66
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   32          | expressao T_MAIOR expressao •
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-
-    $default  reduce using rule 32 (expressao)
-
-
-State 67
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   33          | expressao T_MENOR expressao •
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-
-    $default  reduce using rule 33 (expressao)
-
-
-State 68
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   34          | expressao T_IGUAL expressao •
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-    T_MAIOR  shift, and go to state 53
-    T_MENOR  shift, and go to state 54
-
-    $default  reduce using rule 34 (expressao)
-
-
-State 69
-
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   35          | expressao T_E expressao •
-   36          | expressao • T_OU expressao
-
-    T_MAIS   shift, and go to state 49
-    T_MENOS  shift, and go to state 50
-    T_VEZES  shift, and go to state 51
-    T_DIV    shift, and go to state 52
-    T_MAIOR  shift, and go to state 53
-    T_MENOR  shift, and go to state 54
-    T_IGUAL  shift, and go to state 55
 
     $default  reduce using rule 35 (expressao)
 
 
-State 70
+State 63
 
-   28 expressao: expressao • T_VEZES expressao
-   29          | expressao • T_DIV expressao
-   30          | expressao • T_MAIS expressao
-   31          | expressao • T_MENOS expressao
-   32          | expressao • T_MAIOR expressao
-   33          | expressao • T_MENOR expressao
-   34          | expressao • T_IGUAL expressao
-   35          | expressao • T_E expressao
-   36          | expressao • T_OU expressao
-   36          | expressao T_OU expressao •
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   36          | expressao T_MENOS expressao •
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+
+    $default  reduce using rule 36 (expressao)
+
+
+State 64
+
+   33 expressao: expressao • T_VEZES expressao
+   33          | expressao T_VEZES expressao •
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    $default  reduce using rule 33 (expressao)
+
+
+State 65
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   34          | expressao T_DIV expressao •
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    $default  reduce using rule 34 (expressao)
+
+
+State 66
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   37          | expressao T_MAIOR expressao •
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+
+    $default  reduce using rule 37 (expressao)
+
+
+State 67
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   38          | expressao T_MENOR expressao •
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+
+    $default  reduce using rule 38 (expressao)
+
+
+State 68
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   39          | expressao T_IGUAL expressao •
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+    T_MAIOR  shift, and go to state 53
+    T_MENOR  shift, and go to state 54
+
+    $default  reduce using rule 39 (expressao)
+
+
+State 69
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   40          | expressao T_E expressao •
+   41          | expressao • T_OU expressao
 
     T_MAIS   shift, and go to state 49
     T_MENOS  shift, and go to state 50
@@ -1086,26 +1067,50 @@ State 70
     T_MENOR  shift, and go to state 54
     T_IGUAL  shift, and go to state 55
 
-    $default  reduce using rule 36 (expressao)
+    $default  reduce using rule 40 (expressao)
+
+
+State 70
+
+   33 expressao: expressao • T_VEZES expressao
+   34          | expressao • T_DIV expressao
+   35          | expressao • T_MAIS expressao
+   36          | expressao • T_MENOS expressao
+   37          | expressao • T_MAIOR expressao
+   38          | expressao • T_MENOR expressao
+   39          | expressao • T_IGUAL expressao
+   40          | expressao • T_E expressao
+   41          | expressao • T_OU expressao
+   41          | expressao T_OU expressao •
+
+    T_MAIS   shift, and go to state 49
+    T_MENOS  shift, and go to state 50
+    T_VEZES  shift, and go to state 51
+    T_DIV    shift, and go to state 52
+    T_MAIOR  shift, and go to state 53
+    T_MENOR  shift, and go to state 54
+    T_IGUAL  shift, and go to state 55
+
+    $default  reduce using rule 41 (expressao)
 
 
 State 71
 
-   26 selecao: T_SE expressao T_ENTAO lista_comandos • T_SENAO lista_comandos T_FIMSE
+   31 selecao: T_SE $@7 expressao $@8 • T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
 
-    T_SENAO  shift, and go to state 73
+    T_ENTAO  shift, and go to state 73
 
 
 State 72
 
-   25 repeticao: T_ENQTO expressao T_FACA lista_comandos • T_FIMENQTO
+   27 repeticao: T_ENQTO $@5 expressao $@6 • T_FACA lista_comandos T_FIMENQTO
 
-    T_FIMENQTO  shift, and go to state 74
+    T_FACA  shift, and go to state 74
 
 
 State 73
 
-   26 selecao: T_SE expressao T_ENTAO lista_comandos T_SENAO • lista_comandos T_FIMSE
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO • lista_comandos T_SENAO $@9 lista_comandos T_FIMSE
 
     T_LEIA     shift, and go to state 18
     T_ESCREVA  shift, and go to state 19
@@ -1127,20 +1132,87 @@ State 73
 
 State 74
 
-   25 repeticao: T_ENQTO expressao T_FACA lista_comandos T_FIMENQTO •
+   27 repeticao: T_ENQTO $@5 expressao $@6 T_FACA • lista_comandos T_FIMENQTO
 
-    $default  reduce using rule 25 (repeticao)
+    T_LEIA     shift, and go to state 18
+    T_ESCREVA  shift, and go to state 19
+    T_SE       shift, and go to state 20
+    T_ENQTO    shift, and go to state 21
+    T_IDENTIF  shift, and go to state 22
+
+    $default  reduce using rule 15 (lista_comandos)
+
+    lista_comandos  go to state 76
+    comando         go to state 24
+    entrada_saida   go to state 25
+    leitura         go to state 26
+    escrita         go to state 27
+    repeticao       go to state 28
+    selecao         go to state 29
+    atribuicao      go to state 30
 
 
 State 75
 
-   26 selecao: T_SE expressao T_ENTAO lista_comandos T_SENAO lista_comandos • T_FIMSE
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos • T_SENAO $@9 lista_comandos T_FIMSE
 
-    T_FIMSE  shift, and go to state 76
+    T_SENAO  shift, and go to state 77
 
 
 State 76
 
-   26 selecao: T_SE expressao T_ENTAO lista_comandos T_SENAO lista_comandos T_FIMSE •
+   27 repeticao: T_ENQTO $@5 expressao $@6 T_FACA lista_comandos • T_FIMENQTO
 
-    $default  reduce using rule 26 (selecao)
+    T_FIMENQTO  shift, and go to state 78
+
+
+State 77
+
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO • $@9 lista_comandos T_FIMSE
+
+    $default  reduce using rule 30 ($@9)
+
+    $@9  go to state 79
+
+
+State 78
+
+   27 repeticao: T_ENQTO $@5 expressao $@6 T_FACA lista_comandos T_FIMENQTO •
+
+    $default  reduce using rule 27 (repeticao)
+
+
+State 79
+
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 • lista_comandos T_FIMSE
+
+    T_LEIA     shift, and go to state 18
+    T_ESCREVA  shift, and go to state 19
+    T_SE       shift, and go to state 20
+    T_ENQTO    shift, and go to state 21
+    T_IDENTIF  shift, and go to state 22
+
+    $default  reduce using rule 15 (lista_comandos)
+
+    lista_comandos  go to state 80
+    comando         go to state 24
+    entrada_saida   go to state 25
+    leitura         go to state 26
+    escrita         go to state 27
+    repeticao       go to state 28
+    selecao         go to state 29
+    atribuicao      go to state 30
+
+
+State 80
+
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos • T_FIMSE
+
+    T_FIMSE  shift, and go to state 81
+
+
+State 81
+
+   31 selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE •
+
+    $default  reduce using rule 31 (selecao)

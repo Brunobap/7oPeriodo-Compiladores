@@ -25,4 +25,11 @@ inicio
 		fimenquanto
 		i <- i + 1
 	fimenquanto
+	se j > 5 entao
+		escreva i * j
+	senao 
+		se nao (j = 0) entao
+			escreva i div j
+		senao fimse
+	fimse
 fimprograma

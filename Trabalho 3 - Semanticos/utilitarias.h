@@ -10,10 +10,10 @@
 // Variáveis globais
 int TOPO_TSIMB = 0; // TOPO da tabela de simbolos
 int TOPO_PSEMA = 0; // TOPO da pilha semantica
-int ROTULO = 0; // Proximo numero de rotulo
+int ROTULO = 1; // Proximo numero de rotulo
 int CONTA_VARS = 0; // Núm. de variáveis
 int POS_SIMB; // Pos. na tabela de simbolos
-int aux1 = 0, aux2 = 0, aux3 = 0; // Variáveis auxiliares
+int aux1 = 0, aux2 = 0, aux3 = 0, aux4[255]; // Variáveis auxiliares
 int numLinha = 1; // Núm. da linha no programa
 char atomo[255][30]; // nome de um ident. ou numero
 

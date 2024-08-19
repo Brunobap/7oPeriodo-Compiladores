@@ -27,9 +27,9 @@ entao           return T_ENTAO;
 senao           return T_SENAO;
 fimse           return T_FIMSE;
 
-enquanto        return T_ENQTO;
+enquanto        { return T_ENQTO; }
 faca            return T_FACA;
-fimenquanto     return T_FIMENQTO;
+fimenquanto     { return T_FIMENQTO; }
 
 "+"             return T_MAIS;
 "-"             return T_MENOS;

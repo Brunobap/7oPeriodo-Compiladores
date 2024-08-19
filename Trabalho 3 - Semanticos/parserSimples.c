@@ -159,10 +159,15 @@ enum yysymbol_kind_t
   YYSYMBOL_48_4 = 48,                      /* $@4  */
   YYSYMBOL_escrita = 49,                   /* escrita  */
   YYSYMBOL_repeticao = 50,                 /* repeticao  */
-  YYSYMBOL_selecao = 51,                   /* selecao  */
-  YYSYMBOL_atribuicao = 52,                /* atribuicao  */
-  YYSYMBOL_expressao = 53,                 /* expressao  */
-  YYSYMBOL_termo = 54                      /* termo  */
+  YYSYMBOL_51_5 = 51,                      /* $@5  */
+  YYSYMBOL_52_6 = 52,                      /* $@6  */
+  YYSYMBOL_selecao = 53,                   /* selecao  */
+  YYSYMBOL_54_7 = 54,                      /* $@7  */
+  YYSYMBOL_55_8 = 55,                      /* $@8  */
+  YYSYMBOL_56_9 = 56,                      /* $@9  */
+  YYSYMBOL_atribuicao = 57,                /* atribuicao  */
+  YYSYMBOL_expressao = 58,                 /* expressao  */
+  YYSYMBOL_termo = 59                      /* termo  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -490,16 +495,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   105
+#define YYLAST   86
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  34
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  21
+#define YYNNTS  26
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  44
+#define YYNRULES  49
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  77
+#define YYNSTATES  82
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   288
@@ -551,11 +556,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    25,    25,    26,    25,    31,    33,    33,    36,    37,
-      41,    42,    46,    46,    47,    50,    50,    53,    53,    53,
-      53,    55,    55,    58,    58,    65,    68,    72,    76,    82,
-      89,    96,   103,   110,   117,   124,   131,   138,   145,   148,
-     153,   157,   161,   165,   168
+       0,    25,    25,    26,    25,    32,    34,    34,    37,    38,
+      42,    43,    47,    47,    48,    51,    51,    54,    54,    54,
+      54,    56,    56,    59,    59,    66,    69,    74,    69,    86,
+      87,    93,    86,   102,   108,   115,   122,   129,   136,   143,
+     150,   157,   164,   171,   174,   179,   183,   187,   191,   197
 };
 #endif
 
@@ -579,8 +584,8 @@ static const char *const yytname[] =
   "T_IDENTIF", "T_NUMERO", "T_ABRE", "$accept", "program", "$@1", "$@2",
   "cabecalho", "variaveis", "declaracao_variaveis", "tipo",
   "lista_variaveis", "$@3", "lista_comandos", "comando", "entrada_saida",
-  "leitura", "$@4", "escrita", "repeticao", "selecao", "atribuicao",
-  "expressao", "termo", YY_NULLPTR
+  "leitura", "$@4", "escrita", "repeticao", "$@5", "$@6", "selecao", "$@7",
+  "$@8", "$@9", "atribuicao", "expressao", "termo", YY_NULLPTR
 };
 
 static const char *
@@ -590,7 +595,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-27)
+#define YYPACT_NINF (-34)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -604,14 +609,15 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      26,     0,    32,   -27,   -27,   -27,   -26,   -27,   -27,   -27,
-     -27,     2,    55,    62,   -26,    -3,     2,   -27,   -27,   -18,
-     -18,   -18,    69,    90,    -3,   -27,   -27,   -27,   -27,   -27,
-     -27,   -27,    66,   -18,   -27,   -27,   -27,   -27,   -18,    56,
-     -27,     1,    47,   -18,   -27,   -27,   -27,   -27,    35,   -18,
-     -18,   -18,   -18,   -18,   -18,   -18,   -18,   -18,    -3,    -3,
-      56,   -27,     9,     9,   -27,   -27,    30,    30,    72,    65,
-      65,    86,    84,    -3,   -27,    88,   -27
+       1,    -6,    71,   -34,   -34,   -34,     9,   -34,   -34,   -34,
+     -34,    17,    68,    42,     9,    -5,    17,   -34,   -34,   -18,
+     -34,   -34,    49,    70,    -5,   -34,   -34,   -34,   -34,   -34,
+     -34,   -34,    45,   -18,   -34,   -34,   -34,   -34,   -18,    24,
+     -34,   -18,   -18,   -18,   -34,   -34,   -34,   -34,    12,   -18,
+     -18,   -18,   -18,   -18,   -18,   -18,   -18,   -18,    24,    24,
+      24,   -34,    52,    52,   -34,   -34,    36,    36,    48,    41,
+      41,    69,    64,    -5,    -5,    72,    65,   -34,   -34,    -5,
+      73,   -34
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -621,28 +627,29 @@ static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     2,     5,     1,     7,    11,    10,     3,
        6,     0,     0,    14,     9,    16,     0,     8,    23,     0,
-       0,     0,     0,     0,    16,    17,    21,    22,    18,    19,
-      20,    13,     0,     0,    41,    42,    39,    40,     0,    25,
-      38,     0,     0,     0,     4,    15,    24,    43,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,    16,    16,
-      28,    44,    31,    32,    29,    30,    33,    34,    35,    36,
-      37,     0,     0,    16,    26,     0,    27
+      29,    26,     0,     0,    16,    17,    21,    22,    18,    19,
+      20,    13,     0,     0,    46,    47,    44,    45,     0,    25,
+      43,     0,     0,     0,     4,    15,    24,    48,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,    30,    27,
+      33,    49,    36,    37,    34,    35,    38,    39,    40,    41,
+      42,     0,     0,    16,    16,     0,     0,    31,    28,    16,
+       0,    32
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -27,   -27,   -27,   -27,   -27,   -27,    87,   -27,    89,   -27,
-     -24,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -27,   -13,
-      67
+     -34,   -34,   -34,   -34,   -34,   -34,    66,   -34,    67,   -34,
+     -24,   -34,   -34,   -34,   -34,   -34,   -34,   -34,   -34,   -34,
+     -34,   -34,   -34,   -34,   -33,    53
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
        0,     2,     6,    12,     3,     9,    10,    11,    14,    16,
-      23,    24,    25,    26,    32,    27,    28,    29,    30,    39,
-      40
+      23,    24,    25,    26,    32,    27,    28,    42,    72,    29,
+      41,    71,    79,    30,    39,    40
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -650,32 +657,28 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      45,     7,     8,    18,    19,    20,    33,    41,    42,    21,
-      58,    34,    35,    36,    37,    38,    49,    50,    51,    52,
-      53,    54,    55,    56,    57,    48,    51,    52,    22,     1,
-      60,     4,     5,    13,    71,    72,    62,    63,    64,    65,
-      66,    67,    68,    69,    70,    49,    50,    51,    52,    75,
-      49,    50,    51,    52,    53,    54,    55,    56,    57,    15,
-      59,    61,    49,    50,    51,    52,    53,    54,    55,    56,
-      57,    49,    50,    51,    52,    53,    54,    55,    56,    57,
-      49,    50,    51,    52,    53,    54,    55,    49,    50,    51,
-      52,    53,    54,   -12,    43,    44,    73,    46,    74,    76,
-      47,    17,     0,     0,     0,    31
+      45,    18,    19,    20,     1,    48,    33,    21,    58,    59,
+      60,    34,    35,    36,    37,    38,    62,    63,    64,    65,
+      66,    67,    68,    69,    70,     4,    22,    49,    50,    51,
+      52,    53,    54,    55,    56,    57,     7,     8,    61,    49,
+      50,    51,    52,    53,    54,    55,    56,    57,    13,    75,
+      76,    49,    50,    51,    52,    80,    49,    50,    51,    52,
+      53,    54,    55,    49,    50,    51,    52,    53,    54,    51,
+      52,     5,    15,   -12,    43,    44,    46,    74,    73,    78,
+      17,     0,    77,    31,    81,     0,    47
 };
 
 static const yytype_int8 yycheck[] =
 {
-      24,    27,    28,     6,     7,     8,    24,    20,    21,    12,
-       9,    29,    30,    31,    32,    33,    15,    16,    17,    18,
-      19,    20,    21,    22,    23,    38,    17,    18,    31,     3,
-      43,    31,     0,    31,    58,    59,    49,    50,    51,    52,
-      53,    54,    55,    56,    57,    15,    16,    17,    18,    73,
-      15,    16,    17,    18,    19,    20,    21,    22,    23,     4,
-      13,    26,    15,    16,    17,    18,    19,    20,    21,    22,
-      23,    15,    16,    17,    18,    19,    20,    21,    22,    23,
-      15,    16,    17,    18,    19,    20,    21,    15,    16,    17,
-      18,    19,    20,    31,    25,     5,    10,    31,    14,    11,
-      33,    14,    -1,    -1,    -1,    16
+      24,     6,     7,     8,     3,    38,    24,    12,    41,    42,
+      43,    29,    30,    31,    32,    33,    49,    50,    51,    52,
+      53,    54,    55,    56,    57,    31,    31,    15,    16,    17,
+      18,    19,    20,    21,    22,    23,    27,    28,    26,    15,
+      16,    17,    18,    19,    20,    21,    22,    23,    31,    73,
+      74,    15,    16,    17,    18,    79,    15,    16,    17,    18,
+      19,    20,    21,    15,    16,    17,    18,    19,    20,    17,
+      18,     0,     4,    31,    25,     5,    31,    13,     9,    14,
+      14,    -1,    10,    16,    11,    -1,    33
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
@@ -684,12 +687,13 @@ static const yytype_int8 yystos[] =
 {
        0,     3,    35,    38,    31,     0,    36,    27,    28,    39,
       40,    41,    37,    31,    42,     4,    43,    40,     6,     7,
-       8,    12,    31,    44,    45,    46,    47,    49,    50,    51,
-      52,    42,    48,    24,    29,    30,    31,    32,    33,    53,
-      54,    53,    53,    25,     5,    44,    31,    54,    53,    15,
-      16,    17,    18,    19,    20,    21,    22,    23,     9,    13,
-      53,    26,    53,    53,    53,    53,    53,    53,    53,    53,
-      53,    44,    44,    10,    14,    44,    11
+       8,    12,    31,    44,    45,    46,    47,    49,    50,    53,
+      57,    42,    48,    24,    29,    30,    31,    32,    33,    58,
+      59,    54,    51,    25,     5,    44,    31,    59,    58,    15,
+      16,    17,    18,    19,    20,    21,    22,    23,    58,    58,
+      58,    26,    58,    58,    58,    58,    58,    58,    58,    58,
+      58,    55,    52,     9,    13,    44,    44,    10,    14,    56,
+      44,    11
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
@@ -697,9 +701,9 @@ static const yytype_int8 yyr1[] =
 {
        0,    34,    36,    37,    35,    38,    39,    39,    40,    40,
       41,    41,    43,    42,    42,    44,    44,    45,    45,    45,
-      45,    46,    46,    48,    47,    49,    50,    51,    52,    53,
-      53,    53,    53,    53,    53,    53,    53,    53,    53,    54,
-      54,    54,    54,    54,    54
+      45,    46,    46,    48,    47,    49,    51,    52,    50,    54,
+      55,    56,    53,    57,    58,    58,    58,    58,    58,    58,
+      58,    58,    58,    58,    59,    59,    59,    59,    59,    59
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -707,9 +711,9 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     0,     0,     7,     2,     1,     0,     3,     2,
        1,     1,     0,     3,     1,     2,     0,     1,     1,     1,
-       1,     1,     1,     0,     3,     2,     5,     7,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,     3,     1,     1,
-       1,     1,     1,     2,     3
+       1,     1,     1,     0,     3,     2,     0,     0,     7,     0,
+       0,     0,    10,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     3,     1,     1,     1,     1,     1,     2,     3
 };
 
 
@@ -1175,216 +1179,287 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 25 "parserSimples.y"
                           { printf("\tINPP\n"); }
-#line 1179 "parserSimples.c"
+#line 1183 "parserSimples.c"
     break;
 
   case 3: /* $@2: %empty  */
 #line 26 "parserSimples.y"
-                          { if (CONTA_VARS != 0) printf("\tAMEM %d\n",CONTA_VARS); }
-#line 1185 "parserSimples.c"
+                          { aux2 = -1; if (CONTA_VARS != 0) printf("\tAMEM\t%d\n",CONTA_VARS-1); }
+#line 1189 "parserSimples.c"
     break;
 
   case 4: /* program: cabecalho $@1 variaveis $@2 T_INICIO lista_comandos T_FIM  */
 #line 28 "parserSimples.y"
-                      { printf("\tFIMP\n"); }
-#line 1191 "parserSimples.c"
+                      { printf("\tFIMP\n"); 
+  		fclose(yyin); }
+#line 1196 "parserSimples.c"
+    break;
+
+  case 5: /* cabecalho: T_PROGRAMA T_IDENTIF  */
+#line 32 "parserSimples.y"
+                                        { insere_variavel(atomo[--aux1]); empilha(T_PROGRAMA); }
+#line 1202 "parserSimples.c"
     break;
 
   case 10: /* tipo: T_LOGICO  */
-#line 41 "parserSimples.y"
+#line 42 "parserSimples.y"
                          { aux2 = T_LOGICO; }
-#line 1197 "parserSimples.c"
+#line 1208 "parserSimples.c"
     break;
 
   case 11: /* tipo: T_INTEIRO  */
-#line 42 "parserSimples.y"
+#line 43 "parserSimples.y"
                             { aux2 = T_NUMERO; }
-#line 1203 "parserSimples.c"
+#line 1214 "parserSimples.c"
     break;
 
   case 12: /* $@3: %empty  */
-#line 46 "parserSimples.y"
+#line 47 "parserSimples.y"
                           {	insere_variavel(atomo[--aux1]); empilha(aux2); }
-#line 1209 "parserSimples.c"
+#line 1220 "parserSimples.c"
     break;
 
   case 14: /* lista_variaveis: T_IDENTIF  */
-#line 47 "parserSimples.y"
+#line 48 "parserSimples.y"
                             { insere_variavel(atomo[--aux1]); empilha(aux2); }
-#line 1215 "parserSimples.c"
+#line 1226 "parserSimples.c"
     break;
 
   case 23: /* $@4: %empty  */
-#line 58 "parserSimples.y"
+#line 59 "parserSimples.y"
                         { printf("\tLEIA\n"); }
-#line 1221 "parserSimples.c"
+#line 1232 "parserSimples.c"
     break;
 
   case 24: /* leitura: T_LEIA $@4 T_IDENTIF  */
-#line 59 "parserSimples.y"
+#line 60 "parserSimples.y"
                           {
 			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
-			printf("\tARZG %d\n",deslocamento);
+			printf("\tARZG\t%d\n",deslocamento);
 		}
-#line 1230 "parserSimples.c"
+#line 1241 "parserSimples.c"
     break;
 
   case 25: /* escrita: T_ESCREVA expressao  */
-#line 65 "parserSimples.y"
+#line 66 "parserSimples.y"
                                     { printf("\tESCR\n"); }
-#line 1236 "parserSimples.c"
+#line 1247 "parserSimples.c"
     break;
 
-  case 28: /* atribuicao: T_IDENTIF T_ATRIB expressao  */
-#line 76 "parserSimples.y"
-                                            {
-			int deslocamento = busca_simbolo(atomo[--aux1]);
-			printf("\tARZG %d\n",deslocamento);
-		}
-#line 1245 "parserSimples.c"
+  case 26: /* $@5: %empty  */
+#line 69 "parserSimples.y"
+                        { 
+			aux2++;
+			aux4[aux2] = ROTULO;
+			printf("L%d\tNADA\n",aux4[aux2]); 
+			ROTULO += 2; }
+#line 1257 "parserSimples.c"
     break;
 
-  case 29: /* expressao: expressao T_VEZES expressao  */
-#line 82 "parserSimples.y"
-                                            {
-			int t1 = desempilha(), t2 = desempilha();
-			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
-			printf("\tMULT\n");
-			empilha(T_NUMERO); }
-#line 1256 "parserSimples.c"
+  case 27: /* $@6: %empty  */
+#line 74 "parserSimples.y"
+                          { 
+			int tipoExp = desempilha();
+			if (tipoExp != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			printf("\tDSVF\tL%d\n",aux4[aux2]+1); }
+#line 1266 "parserSimples.c"
     break;
 
-  case 30: /* expressao: expressao T_DIV expressao  */
-#line 89 "parserSimples.y"
-                                            {
-			int t1 = desempilha(), t2 = desempilha();
-			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
-			printf("\tDIVI\n");
-			empilha(T_NUMERO); }
-#line 1267 "parserSimples.c"
+  case 28: /* repeticao: T_ENQTO $@5 expressao $@6 T_FACA lista_comandos T_FIMENQTO  */
+#line 79 "parserSimples.y"
+                           { 
+			printf("\tDSVS\tL%d\n",aux4[aux2]);
+			printf("L%d\tNADA\n",aux4[aux2]+1);
+			aux2--; }
+#line 1275 "parserSimples.c"
     break;
 
-  case 31: /* expressao: expressao T_MAIS expressao  */
-#line 96 "parserSimples.y"
-                                             {
-			int t1 = desempilha(), t2 = desempilha();
-			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
-			printf("\tSOMA\n");
-			empilha(T_NUMERO); }
-#line 1278 "parserSimples.c"
+  case 29: /* $@7: %empty  */
+#line 86 "parserSimples.y"
+                     { aux2++; }
+#line 1281 "parserSimples.c"
     break;
 
-  case 32: /* expressao: expressao T_MENOS expressao  */
-#line 103 "parserSimples.y"
-                                              {
-			int t1 = desempilha(), t2 = desempilha();
-			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Operação aritmética com tipos booleanos");
-			printf("\tSUBT\n");
-			empilha(T_NUMERO); }
-#line 1289 "parserSimples.c"
+  case 30: /* $@8: %empty  */
+#line 87 "parserSimples.y"
+                          { 
+			int tipoExp = desempilha();
+			if (tipoExp != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			aux4[aux2] = ROTULO; 
+			ROTULO+=2;
+			printf("\tDSVF\tL%d\n",aux4[aux2]); }
+#line 1292 "parserSimples.c"
     break;
 
-  case 33: /* expressao: expressao T_MAIOR expressao  */
-#line 110 "parserSimples.y"
-                                              {
-			int t1 = desempilha(), t2 = desempilha();
-			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
-			printf("\tCMMA\n");
-			empilha(T_LOGICO); }
+  case 31: /* $@9: %empty  */
+#line 93 "parserSimples.y"
+                                               { 
+			printf("\tDSVS\tL%d\n",aux4[aux2]+1);
+			printf("L%d\tNADA\n",aux4[aux2]); }
 #line 1300 "parserSimples.c"
     break;
 
-  case 34: /* expressao: expressao T_MENOR expressao  */
-#line 117 "parserSimples.y"
+  case 32: /* selecao: T_SE $@7 expressao $@8 T_ENTAO lista_comandos T_SENAO $@9 lista_comandos T_FIMSE  */
+#line 96 "parserSimples.y"
+                                       { 
+			printf("L%d\tNADA\n",aux4[aux2]+1); 
+			aux2--; }
+#line 1308 "parserSimples.c"
+    break;
+
+  case 33: /* atribuicao: T_IDENTIF T_ATRIB expressao  */
+#line 102 "parserSimples.y"
+                                            {
+			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
+			printf("\tARZG\t%d\n",deslocamento);
+		}
+#line 1317 "parserSimples.c"
+    break;
+
+  case 34: /* expressao: expressao T_VEZES expressao  */
+#line 108 "parserSimples.y"
+                                            {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_NUMERO) ERRO("Operação aritmética com tipos estranhos");
+			printf("\tMULT\n");
+			empilha(T_NUMERO); }
+#line 1328 "parserSimples.c"
+    break;
+
+  case 35: /* expressao: expressao T_DIV expressao  */
+#line 115 "parserSimples.y"
+                                            {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_NUMERO) ERRO("Operação aritmética com tipos estranhos");
+			printf("\tDIVI\n");
+			empilha(T_NUMERO); }
+#line 1339 "parserSimples.c"
+    break;
+
+  case 36: /* expressao: expressao T_MAIS expressao  */
+#line 122 "parserSimples.y"
+                                             {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_NUMERO) ERRO("Operação aritmética com tipos estranhos");
+			printf("\tSOMA\n");
+			empilha(T_NUMERO); }
+#line 1350 "parserSimples.c"
+    break;
+
+  case 37: /* expressao: expressao T_MENOS expressao  */
+#line 129 "parserSimples.y"
                                               {
 			int t1 = desempilha(), t2 = desempilha();
 			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			if (t1 != T_NUMERO) ERRO("Operação aritmética com tipos estranhos");
+			printf("\tSUBT\n");
+			empilha(T_NUMERO); }
+#line 1361 "parserSimples.c"
+    break;
+
+  case 38: /* expressao: expressao T_MAIOR expressao  */
+#line 136 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_NUMERO) ERRO("Comparação com tipos estranhos");
+			printf("\tCMMA\n");
+			empilha(T_LOGICO); }
+#line 1372 "parserSimples.c"
+    break;
+
+  case 39: /* expressao: expressao T_MENOR expressao  */
+#line 143 "parserSimples.y"
+                                              {
+			int t1 = desempilha(), t2 = desempilha();
+			if (t1 != t2) ERRO("Operação com tipos diferentes");
+			if (t1 != T_NUMERO) ERRO("Comparação com tipos estranhos");
 			printf("\tCMME\n");
 			empilha(T_LOGICO); }
-#line 1311 "parserSimples.c"
+#line 1383 "parserSimples.c"
     break;
 
-  case 35: /* expressao: expressao T_IGUAL expressao  */
-#line 124 "parserSimples.y"
+  case 40: /* expressao: expressao T_IGUAL expressao  */
+#line 150 "parserSimples.y"
                                               {
 			int t1 = desempilha(), t2 = desempilha();
 			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 == T_LOGICO) ERRO("Comparação com tipos booleanos");
+			if (t1 != T_NUMERO) ERRO("Comparação com tipos estranhos");
 			printf("\tCMIG\n");
 			empilha(T_LOGICO); }
-#line 1322 "parserSimples.c"
+#line 1394 "parserSimples.c"
     break;
 
-  case 36: /* expressao: expressao T_E expressao  */
-#line 131 "parserSimples.y"
+  case 41: /* expressao: expressao T_E expressao  */
+#line 157 "parserSimples.y"
                                           {
 			int t1 = desempilha(), t2 = desempilha();
 			if (t1 != t2) ERRO("Operação com tipos diferentes");
-			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos estranhos");
 			printf("\tCONJ\n");
 			empilha(T_LOGICO); }
-#line 1333 "parserSimples.c"
+#line 1405 "parserSimples.c"
     break;
 
-  case 37: /* expressao: expressao T_OU expressao  */
-#line 138 "parserSimples.y"
+  case 42: /* expressao: expressao T_OU expressao  */
+#line 164 "parserSimples.y"
                                            {
 			int t1 = desempilha(), t2 = desempilha();
 			if (t1 != t2) ERRO("Operação com tipos diferentes");
 			if (t1 != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
 			printf("\tDISJ\n");
 			empilha(T_LOGICO); }
-#line 1344 "parserSimples.c"
+#line 1416 "parserSimples.c"
     break;
 
-  case 39: /* termo: T_IDENTIF  */
-#line 148 "parserSimples.y"
+  case 44: /* termo: T_IDENTIF  */
+#line 174 "parserSimples.y"
                           {
 			int var = busca_retorna_simbolo(atomo[--aux1]).desloca;
-			printf("\tCRVG %d\n",var);
+			printf("\tCRVG\t%d\n",var);
 			empilha(PSEMA[var]); }
-#line 1353 "parserSimples.c"
+#line 1425 "parserSimples.c"
     break;
 
-  case 40: /* termo: T_NUMERO  */
-#line 153 "parserSimples.y"
+  case 45: /* termo: T_NUMERO  */
+#line 179 "parserSimples.y"
                            { 
-			printf("\tCRCT %d\n",aux3); 
+			printf("\tCRCT\t%d\n",aux3); 
 			empilha(T_NUMERO); }
-#line 1361 "parserSimples.c"
+#line 1433 "parserSimples.c"
     break;
 
-  case 41: /* termo: T_V  */
-#line 157 "parserSimples.y"
+  case 46: /* termo: T_V  */
+#line 183 "parserSimples.y"
                       { 
-			printf("\tCRCT 1\n"); 
+			printf("\tCRCT\t1\n"); 
 			empilha(T_LOGICO); }
-#line 1369 "parserSimples.c"
+#line 1441 "parserSimples.c"
     break;
 
-  case 42: /* termo: T_F  */
-#line 161 "parserSimples.y"
+  case 47: /* termo: T_F  */
+#line 187 "parserSimples.y"
                       { 
-			printf("\tCRCT 0\n"); 
+			printf("\tCRCT\t0\n"); 
 			empilha(T_LOGICO); }
-#line 1377 "parserSimples.c"
+#line 1449 "parserSimples.c"
     break;
 
-  case 43: /* termo: T_NAO termo  */
-#line 165 "parserSimples.y"
+  case 48: /* termo: T_NAO termo  */
+#line 191 "parserSimples.y"
                               { 
+			int t1 = desempilha();
+			if (t1 != T_LOGICO) ERRO("Negação com tipos estranhos");
+			empilha(T_LOGICO);
 			printf("\tNEGA\n"); }
-#line 1384 "parserSimples.c"
+#line 1459 "parserSimples.c"
     break;
 
 
-#line 1388 "parserSimples.c"
+#line 1463 "parserSimples.c"
 
       default: break;
     }
@@ -1577,7 +1652,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 170 "parserSimples.y"
+#line 198 "parserSimples.y"
 
 
 
@@ -1588,5 +1663,4 @@ void yyerror(char *s) {
 void main(int argc, char **argv) {
   yyin = fopen(argv[1], "r");
   yyparse();
-  fclose(yyin);
 }

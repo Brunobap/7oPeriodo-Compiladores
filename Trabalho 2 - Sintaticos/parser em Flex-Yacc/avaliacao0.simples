@@ -6,21 +6,29 @@
 
 /*PROGRAMA REPETE*/
 programa repete
-	inteiro i j
+	inteiro i j	
+	logico x y
 
 /*INICIO*/
 inicio
 	i <- 1
+	leia j
 	/*ENQUANTO*/
-	enquanto i < 10 faca
+	enquanto nao (i > 10) faca
 		j <- 1
 		/*
 		ENQUANTO
 		*/
 		enquanto j < 10 faca
-			escreva i + j
+			escreva i * j
 			j <- j + 1
 		fimenquanto
 		i <- i + 1
 	fimenquanto
+	se j > 5 entao
+		escreva i * j
+	senao 
+		se nao (j = 0) entao escreva i div j
+		senao fimse
+	fimse
 fimprograma

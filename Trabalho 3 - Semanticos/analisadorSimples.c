@@ -840,7 +840,7 @@ return T_FIMSE;
 case 10:
 YY_RULE_SETUP
 #line 30 "analisadorSimples.l"
-return T_ENQTO;
+{ return T_ENQTO; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
@@ -850,7 +850,7 @@ return T_FACA;
 case 12:
 YY_RULE_SETUP
 #line 32 "analisadorSimples.l"
-return T_FIMENQTO;
+{ return T_FIMENQTO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
