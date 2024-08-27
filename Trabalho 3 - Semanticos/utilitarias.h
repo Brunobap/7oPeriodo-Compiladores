@@ -35,7 +35,6 @@ void ERRO (char *msg, ...){
 struct simbolo{
     char id[30];
     int desloca;
-    int tipo;
 } TSIMB [TAM_TSIMB], elem_tab;
 
 // Pilha Semantica
@@ -51,12 +50,14 @@ int busca_simbolo(char *ident){
     for (; strcmp(TSIMB[i].id, ident) && i >= 0; i--);
     return i;
 }
-struct simbolo busca_retorna_simbolo(char *ident){
+int busca_retorna_simbolo(char *ident){
     int i = TOPO_TSIMB-1;
     for (; strcmp(TSIMB[i].id, ident) && i >= 0; i--);
 
-    if (i != -1) return TSIMB[i];
-    else ERRO("Simbolo desconhecido: [%s] ",ident);
+    if (i > 0) return TSIMB[i].desloca;
+    else 
+        if (i == -1) ERRO("Simbolo desconhecido: [%s] ",ident);
+        else ERRO("Tentou usar a variável programa: [%s] ",ident);
 }
 
 /*

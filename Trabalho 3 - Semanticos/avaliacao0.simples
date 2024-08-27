@@ -14,7 +14,7 @@ inicio
 	i <- 1
 	leia j
 	/*ENQUANTO*/
-	enquanto nao (i > 10) faca
+	enquanto i < 10 faca
 		j <- 1
 		/*
 		ENQUANTO
@@ -25,7 +25,9 @@ inicio
 		fimenquanto
 		i <- i + 1
 	fimenquanto
-	se j > 5 entao
+	leia x
+	leia y
+	se x e y entao
 		escreva i * j
 	senao 
 		se nao (j = 0) entao

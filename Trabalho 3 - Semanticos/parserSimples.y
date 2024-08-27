@@ -49,20 +49,19 @@
 
 	lista_comandos: comando lista_comandos | ;
 
-	comando:
-		entrada_saida | repeticao | selecao | atribuicao ;
+	comando: entrada_saida | repeticao | selecao | atribuicao ;
 
 	entrada_saida: leitura | escrita ;
 
 	leitura: 
 		T_LEIA 	{ printf("\tLEIA\n"); }
 		T_IDENTIF {
-			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
-			printf("\tARZG\t%d\n",deslocamento);
+			int deslocamento = busca_retorna_simbolo(atomo[--aux1]);
+			printf("\tARZG\t%d\n",deslocamento-1);
 		};
 
 	escrita: 
-		T_ESCREVA expressao { printf("\tESCR\n"); } ;
+		T_ESCREVA expressao { desempilha(); printf("\tESCR\n"); } ;
 
 	repeticao:
 		T_ENQTO { 
@@ -72,13 +71,13 @@
 			ROTULO += 2; }
 		expressao { 
 			int tipoExp = desempilha();
-			if (tipoExp != T_LOGICO) ERRO("Operação lógica com tipos numéricos");
+			if (tipoExp != T_LOGICO) ERRO("Operação lógica com não-booleanos.");
 			printf("\tDSVF\tL%d\n",aux4[aux2]+1); }
-		T_FACA lista_comandos 
-		T_FIMENQTO { 
+		T_FACA lista_comandos { 
 			printf("\tDSVS\tL%d\n",aux4[aux2]);
 			printf("L%d\tNADA\n",aux4[aux2]+1);
 			aux2--; }
+		T_FIMENQTO 
 		;
 
 	selecao:
@@ -89,18 +88,21 @@
 			aux4[aux2] = ROTULO; 
 			ROTULO+=2;
 			printf("\tDSVF\tL%d\n",aux4[aux2]); }
-		T_ENTAO lista_comandos T_SENAO { 
+		T_ENTAO lista_comandos { 
 			printf("\tDSVS\tL%d\n",aux4[aux2]+1);
 			printf("L%d\tNADA\n",aux4[aux2]); }
-		lista_comandos T_FIMSE { 
+		T_SENAO lista_comandos { 
 			printf("L%d\tNADA\n",aux4[aux2]+1); 
 			aux2--; }
+		T_FIMSE
 		;
 
 	atribuicao: 
 		T_IDENTIF T_ATRIB expressao {
-			int deslocamento = busca_retorna_simbolo(atomo[--aux1]).desloca;
-			printf("\tARZG\t%d\n",deslocamento);
+			int var = busca_retorna_simbolo(atomo[--aux1]);			
+			int tipoExp = desempilha();
+			if (tipoExp != PSEMA[var]) ERRO("Atribuição de tipo errado à variável.");
+			printf("\tARZG\t%d\n",var-1);
 		} ;
 
 	expressao:
@@ -171,8 +173,8 @@
 
 	termo:
 		T_IDENTIF {
-			int var = busca_retorna_simbolo(atomo[--aux1]).desloca;
-			printf("\tCRVG\t%d\n",var);
+			int var = busca_retorna_simbolo(atomo[--aux1]);
+			printf("\tCRVG\t%d\n",var-1);
 			empilha(PSEMA[var]); }
 
 		| T_NUMERO { 
@@ -189,7 +191,7 @@
 
 		| T_NAO termo { 
 			int t1 = desempilha();
-			if (t1 != T_LOGICO) ERRO("Negação com tipos estranhos");
+			if (t1 != T_LOGICO) ERRO("Negação de não-booleanos.");
 			empilha(T_LOGICO);
 			printf("\tNEGA\n"); }
 

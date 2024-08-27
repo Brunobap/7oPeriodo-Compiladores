@@ -2,9 +2,9 @@ programa repete
 	inteiro i j
 inicio
 	i <- 1
-	enquanto 1 < 10 faca
+	enquanto i < 10 faca
 		j <- 1
-		enquanto j <- 10 faca
+		enquanto j < 10 faca
 			escreva i + j
 			j <- j + 1
 		fimenquanto
