@@ -1,7 +1,10 @@
 programa repete
-	inteiro i j
+	inteiro i j k
+	logico a b
 inicio
 	i <- 1
+	leia k
+	escreva a
 	enquanto i < 10 faca
 		j <- 1
 		enquanto j < 10 faca
